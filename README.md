@@ -44,9 +44,9 @@ Everything here is **open for transparency**, so the Pi community can track the 
       "address": "pi_1trendforgewalletxxxxxxxxxxxxxxxxx"
     },
     {
-      "wallet_name": "cloudy_ai_wallet",
-      "address": "pi_1cloudyaiwalletxxxxxxxxxxxxxxxxxxx"
-    },
+      "wallet_name": "droplink_wallet",
+      "address": "pi_1droplinkwalletxxxxxxxxxxxxxxxxxxxx"
+    }
     {
       "wallet_name": "taskhub_wallet",
       "address": "pi_1pigamewalletxxxxxxxxxxxxxxxxxxxxx"
