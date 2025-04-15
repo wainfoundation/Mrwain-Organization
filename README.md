@@ -87,5 +87,9 @@ Everything here is **open for transparency**, so the Pi community can track the 
 
 ---
 
-**Built with 🔥 by the mrwain Organization**  
+## 🌱 Future DApps (Coming Soon)
+
+---
+
+**Built with ❤️ by the mrwain Organization**  
 🌐 Empowering the Pi Network through real utility and vision
