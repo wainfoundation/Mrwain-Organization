@@ -1,4 +1,4 @@
-# 🚀 mrwain-dapps-hub
+# 🚀 MRWAIN-DAPPS-HUB
 
 **The Official DApps & Wallet Registry of the mrwain Organization**  
 🔗 Built on the Pi Network | 💡 Transparent | 📈 Visionary
