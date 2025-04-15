@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="mrwain Organization - Pioneering Decentralized Solutions on Pi Network with DApps like Droplink, Cloudy Wallet, Truthweb, QuantumPay, TrendForge, and TaskHub.">
+    <title>mrwain Organization | Decentralized Innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --black: #1A1A1A;
+            --gray: #4B5563;
+            --light-gray: #E5E7EB;
+            --blue: #007BFF;
+        }
+
+        /* Neumorphic Style */
+        .neumorphic {
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.06), -4px -4px 8px rgba(255, 255, 255, 0.9);
+        }
+
+        /* Navigation Hover */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--blue);
+            transform: translateY(-1px);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .cta-button:hover,
+        .cta-button:focus {
+            background: linear-gradient(135deg, var(--blue), var(--black));
+            transform: scale(1.1);
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -6px -6px 12px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        /* Fade Animation */
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Hover */
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.9);
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        #mobile-menu.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #mobile-menu a {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: bounceIn 0.4s ease-out forwards;
+        }
+
+        #mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
+        #mobile-menu a:nth-child(2) { animation-delay: 0.2s; }
+        #mobile-menu a:nth-child(3) { animation-delay: 0.3s; }
+        #mobile-menu a:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            60% { opacity: 0.7; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Background Pattern */
+        .section-bg {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-inter antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg neumorphic py-4 px-6 flex justify-between items-center">
+        <div class="text-2xl font-black">Mrwain Organization</div>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-4">
+            <a href="#home" class="text-sm font-semibold nav-link">Home</a>
+            <a href="#vision" class="text-sm font-semibold nav-link">Vision</a>
+            <a href="#dapps" class="text-sm font-semibold nav-link">DApps</a>
+            <a href="#contact" class="text-sm font-semibold nav-link">Contact</a>
+            <a href="https://github.com/mrwain" target="_blank" class="text-sm font-bold bg-blue-600 text-white px-4 py-2 rounded-full neumorphic cta-button transition">Join Us</a>
+        </nav>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden focus:outline-none" aria-expanded="false" aria-label="Toggle navigation">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-6 text-center">
+            <button id="close-menu-btn" class="absolute top-4 right-4 focus:outline-none">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="#home" class="text-lg font-semibold nav-link">Home</a>
+            <a href="#vision" class="text-lg font-semibold nav-link">Vision</a>
+            <a href="#dapps" class="text-lg font-semibold nav-link">DApps</a>
+            <a href="#contact" class="text-lg font-semibold nav-link">Contact</a>
+            <a href="https://github.com/mrwain" target="_blank" class="text-lg font-bold bg-blue-600 text-white px-6 py-3 rounded-full neumorphic cta-button transition">Join Us</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-20 px-4 bg-gray-50 text-center scroll-reveal section-bg">
+        <h1 class="text-4xl md:text-5xl font-semibold mb-6 max-w-3xl mx-auto fade-in-up">
+            Welcome to Mrwain Organization
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto fade-in-up">
+            Pioneering the Future of Decentralized Solutions on the Pi Network
+        </p>
+        <a href="https://github.com/mrwain" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full font-bold neumorphic cta-button fade-in-up">
+            Explore Our Projects
+        </a>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="py-16 px-4 max-w-7xl mx-auto scroll-reveal section-bg">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-center fade-in-up">Our Vision</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center fade-in-up">
+            At mrwain, we are dedicated to building a sustainable and innovative decentralized ecosystem powered by the Pi Network. Our goal is to provide privacy-first, scalable solutions that empower individuals and businesses worldwide.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <h3 class="text-xl font-semibold mb-2">Decentralization</h3>
+                <p class="text-gray-600">Empowering users with control over their data and transactions.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+                <p class="text-gray-600">Pushing boundaries with cutting-edge DApps on Pi Network.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <h3 class="text-xl font-semibold mb-2">Community</h3>
+                <p class="text-gray-600">Fostering collaboration through open-source contributions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DApps Section -->
+    <section id="dapps" class="py-16 px-4 max-w-7xl mx-auto scroll-reveal section-bg">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-center fade-in-up">Our DApps</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center fade-in-up">
+            Discover our decentralized applications designed to enhance the Pi Network ecosystem.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <svg class="w-8 h-8 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-2 text-center">Droplink</h3>
+                <p class="text-gray-600 text-center">A decentralized link management platform for secure sharing.</p>
+                <a href="https://reimaginetruth.github.io/droplink" target="_blank" class="block mt-4 text-sm font-semibold text-blue-600 text-center hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <svg class="w-8 h-8 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-2 text-center">Cloudy Wallet</h3>
+                <p class="text-gray-600 text-center">Secure and user-friendly asset management for Pi Network.</p>
+                <a href="https://www.cloudypi.xyz/" target="_blank" class="block mt-4 text-sm font-semibold text-blue-600 text-center hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <svg class="w-8 h-8 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-2 text-center">Truthweb</h3>
+                <p class="text-gray-600 text-center">Decentralized e-commerce for secure transactions.</p>
+                <a href="https://truthweb.xyz/" target="_blank" class="block mt-4 text-sm font-semibold text-blue-600 text-center hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <svg class="w-8 h-8 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-2 text-center">QuantumPay</h3>
+                <p class="text-gray-600 text-center">A decentralized payment gateway for seamless transactions.</p>
+                <a href="https://reimaginetruth.github.io/QuantumPay" target="_blank" class="block mt-4 text-sm font-semibold text-blue-600 text-center hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <svg class="w-8 h-8 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-2 text-center">TrendForge</h3>
+                <p class="text-gray-600 text-center">A decentralized platform for creators to share content.</p>
+                <a href="https://reimaginetruth.github.io/Trend-Forge-Update/" target="_blank" class="block mt-4 text-sm font-semibold text-blue-600 text-center hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-2xl neumorphic card-hover fade-in-up">
+                <svg class="w-8 h-8 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-2 text-center">TaskHub</h3>
+                <p class="text-gray-600 text-center">A decentralized job and microtask marketplace.</p>
+                <a href="#" class="block mt-4 text-sm font-semibold text-blue-600 text-center hover:underline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 max-w-7xl mx-auto scroll-reveal section-bg">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-center fade-in-up">Get Involved</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto text-center fade-in-up">
+            Join us in shaping the future of decentralized technology. Contact us or contribute to our open-source projects.
+        </p>
+        <form class="max-w-lg mx-auto bg-white p-8 rounded-2xl neumorphic fade-in-up">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-semibold mb-2">Name</label>
+                <input type="text" id="name" class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-semibold mb-2">Email</label>
+                <input type="email" id="email" class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-semibold mb-2">Message</label>
+                <textarea id="message" class="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold neumorphic cta-button">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-black text-white scroll-reveal">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">mrwain Organization</h3>
+                <p class="text-gray-400">Built with 🔥 to empower the Pi Network ecosystem.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#vision" class="text-base footer-link transition text-gray-400 hover:text-blue-600">Vision</a></li>
+                    <li><a href="#dapps" class="text-base footer-link transition text-gray-400 hover:text-blue-600">DApps</a></li>
+                    <li><a href="#contact" class="text-base footer-link transition text-gray-400 hover:text-blue-600">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                <div class="flex gap-4">
+                    <a href="https://github.com/mrwain" target="_blank" rel="noopener noreferrer" class="bg-white p-3 rounded-full neumorphic">
+                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.49v-1.7c-2.78.61-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.52.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.66.94.66 1.9v2.81c0 .27.16.59.67.49A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:mrwain2022@gmail.com" class="bg-white p-3 rounded-full neumorphic">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6m-18 0v8a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+            <p class="text-gray-400 text-sm">
+                © 2025 mrwain Organization. All rights reserved. 
+                <a href="#" class="footer-link transition text-gray-400 hover:text-blue-600">Privacy Policy</a> | 
+                <a href="#" class="footer-link transition text-gray-400 hover:text-blue-600">Terms of Use</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuIcon = mobileMenuBtn.querySelector('.menu-icon');
+        const closeIcon = mobileMenuBtn.querySelector('.close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('show');
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        window.addEventListener('scroll', () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+
+        // Footer Link Hover
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('mouseover', () => {
+                link.style.color = '#007BFF';
+                link.style.transform = 'translateX(4px)';
+            });
+            link.addEventListener('mouseout', () => {
+                link.style.color = '';
+                link.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
