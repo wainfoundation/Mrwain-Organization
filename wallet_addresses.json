@@ -1,0 +1,32 @@
+{
+  "foundation_wallet": {
+    "wallet_name": "mrwain_foundation_wallet",
+    "address": "pi_1foundationaddressxxxxxxxxxxxxxxxxxx"
+  },
+  "dapps": [
+    {
+      "wallet_name": "cloudy_wallet",
+      "address": "pi_1cloudywalletxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "wallet_name": "truthweb_wallet",
+      "address": "pi_1truthwebwalletxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "wallet_name": "quantumpay_wallet",
+      "address": "pi_1quantumpaywalletxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "wallet_name": "trendforge_wallet",
+      "address": "pi_1trendforgewalletxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "wallet_name": "cloudy_ai_wallet",
+      "address": "pi_1cloudyaiwalletxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "wallet_name": "taskhub_wallet",
+      "address": "pi_1pigamewalletxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ]
+}
