@@ -9,7 +9,7 @@ Our team consists of **10 visionary developers** and the **founder** working to 
 1. **Mrwain (Founder)**  
    Expertise: Blockchain, entrepreneurship, visionary leadership  
    Role: Mrwain is the founder of the mrwain Organization. As the leader of the team, Mrwain drives the vision, strategy, and direction of the organization, ensuring everything aligns with the core goals.
-   **Contact:** mrwain2022@gmail.com
+   **Contact:** mrwainorganization@gmail.com
 
 2. **Neo_Byte (Blockchain Developer)**  
    Expertise: Smart contracts, blockchain architecture  
