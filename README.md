@@ -67,7 +67,7 @@ Everything here is **open for transparency**, so the Pi community can track the 
 | **TrendForge**    | 🛠️ Planning   | News & trends platform for digital culture |
 | **Droplink**     | 🚧 In Progress | A platform that helps creators and businesses share content        |
 | **TaskHub**       | 🚧 In Progress   | Microtask job board for Pi earners         |
-| **mrwain Foundation** | ✅ Live  | Treasury & governance wallet for ecosystem |
+| **Mrwain Foundation** | ✅ Live  | Treasury & governance wallet for ecosystem |
 
 ---
 
