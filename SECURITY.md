@@ -9,7 +9,7 @@ If you discover a potential security vulnerability in any of our repositories or
 1. **Do not disclose** the vulnerability publicly.
 2. **Report it directly** to the security team via our secure contact method.
 3. Use the following contact options:
-    - **Email**: security@mrwain.org
+    - **Email**: mrwainorganization@gmail.com
     - **Encrypted Message** (via [ProtonMail](https://protonmail.com)): security@mrwain.org (Please use PGP for encryption).
 4. You will receive a confirmation within 24 hours, and we will work with you to resolve the issue as quickly as possible.
 
