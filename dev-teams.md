@@ -65,7 +65,7 @@ Our team consists of **10 visionary developers** and the **founder** working to 
 ## Join Us
 
 Interested in collaborating with the **Mrwain Organization**? Feel free to reach out to us. We’re always open to talented individuals who share our vision for the future of decentralized applications.
-Gmail : mrwain2022@gmail.com
+Gmail :mrwainorganization@gmail.com
 ---
 
 Built with 🔥 by the **Mrwain Organization** ❤️
