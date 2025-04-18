@@ -105,8 +105,8 @@ The **mrwain Organization** is building a **transparent**, **innovative**, and *
 For inquiries or support, please contact:
 
 - **Mrwain (Founder)**  
-  Email: [mrwain2022@gmail.com](mailto:mrwain2022@gmail.com)
+  Email: mrwainorganization@gmail.com
 
 ---
 
-*Built with 🔥 by the **mrwain Organization** ❤️*
+*Built with ❤️ by the **mrwain Organization** 
