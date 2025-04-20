@@ -401,16 +401,16 @@
         <h1>Support Our Mission</h1>
         <p>Your donation helps us develop new DApps, enhance transparency, and grow the Pi ecosystem. Choose your preferred method below.</p>
         <div class="donation-options">
-            <!-- PayPal Donation (USD and Other Currencies) -->
+            <!-- PayPal Donation (Dynamic Button Based on Amount) -->
             <div class="donation-card">
                 <h2>Donate with PayPal</h2>
-                <p>Support us using PayPal in USD or your preferred currency.</p>
-                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                <p>Support us using PayPal in your preferred currency.</p>
+                <form id="paypalForm" action="" method="post" target="_top">
                     <input type="hidden" name="business" value="donations@mrwain.org">
                     <input type="hidden" name="no_recurring" value="0">
                     <input type="hidden" name="item_name" value="Mrwain Organization Donation">
                     <label for="amount-paypal">Donation Amount:</label>
-                    <select name="amount" id="amount-paypal">
+                    <select name="amount" id="amount-paypal" onchange="updatePaypalButton()">
                         <option value="5.00">$5.00</option>
                         <option value="25.00">$25.00</option>
                         <option value="50.00">$50.00</option>
@@ -424,19 +424,20 @@
                         <option value="CAD">CAD</option>
                         <option value="AUD">AUD</option>
                     </select>
-                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
-                    <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+                    <div id="paypalButtonContainer">
+                        <input type="image" name="submit" id="paypalButton" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
+                        <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+                    </div>
                 </form>
             </div>
 
-            <!-- Pi Donation -->
+            <!-- Pi Donation (Direct to Pi Browser Wallet) -->
             <div class="donation-card">
                 <h2>Donate with Pi</h2>
-                <p>Send Pi to our Pi Network wallet address below.</p>
+                <p>Send Pi directly to our wallet via the Pi Browser.</p>
                 <p class="wallet-address">mrwain_pi_donation</p>
                 <button class="copy-btn" onclick="copyToClipboard('mrwain_pi_donation')">Copy Address</button>
-                <p>Please use the Pi Network app to send your donation. Ensure you are on the mainnet.</p>
-                <a href="https://minepi.com/" target="_blank" class="donate-btn">Open Pi Network</a>
+                <button class="donate-btn" onclick="openPiWallet()">Donate via Pi Browser</button>
             </div>
 
             <!-- Other Cryptocurrencies -->
@@ -458,7 +459,7 @@
     <div class="overlay" id="overlay"></div>
     <div class="confirmation-message" id="confirmationMessage">
         <h3>Thank You!</h3>
-        <p>Your donation has been copied. Please proceed with the payment using the provided wallet address.</p>
+        <p>Your wallet address has been copied. Please proceed with the payment.</p>
     </div>
 
     <!-- Footer -->
@@ -547,8 +548,49 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Copy Functionality and Confirmation -->
+    <!-- JavaScript for Dynamic PayPal Button, Pi Wallet, and Copy Functionality -->
     <script>
+        function updatePaypalButton() {
+            const amountSelect = document.getElementById('amount-paypal');
+            const paypalForm = document.getElementById('paypalForm');
+            const paypalButton = document.getElementById('paypalButton');
+            const amount = amountSelect.value;
+
+            // Define different PayPal links based on amount
+            const paypalLinks = {
+                '5.00': 'https://www.paypal.com/donate?hosted_button_id=5_DONATION_LINK', // Replace with actual $5 link
+                '25.00': 'https://www.paypal.com/donate?hosted_button_id=25_DONATION_LINK', // Replace with actual $25 link
+                '50.00': 'https://www.paypal.com/donate?hosted_button_id=50_DONATION_LINK', // Replace with actual $50 link
+                '': 'https://www.paypal.com/donate?hosted_button_id=CUSTOM_DONATION_LINK' // Replace with actual custom link
+            };
+
+            const paypalButtons = {
+                '5.00': 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif', // Default PayPal button
+                '25.00': 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif', // Different button style
+                '50.00': 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif', // Smaller button style
+                '': 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif' // Default for custom
+            };
+
+            // Update the form action and button image based on selected amount
+            paypalForm.action = paypalLinks[amount] || paypalLinks[''];
+            paypalButton.src = paypalButtons[amount] || paypalButtons[''];
+        }
+
+        function openPiWallet() {
+            // Attempt to open Pi Browser wallet with the wallet address
+            const walletAddress = 'mrwain_pi_donation';
+            const piUrl = `pi://pay?address=${walletAddress}`;
+            window.location.href = piUrl;
+
+            // Fallback if Pi Browser is not installed
+            setTimeout(() => {
+                if (document.hasFocus()) {
+                    alert('Please install the Pi Browser to donate with Pi.');
+                    window.location.href = 'https://minepi.com/';
+                }
+            }, 1000);
+        }
+
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 const confirmationMessage = document.getElementById('confirmationMessage');
@@ -561,6 +603,9 @@
                 }, 2000);
             });
         }
+
+        // Initialize PayPal button on page load
+        window.onload = updatePaypalButton;
     </script>
 </body>
 </html>
