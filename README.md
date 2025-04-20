@@ -90,6 +90,6 @@ Everything here is **open for transparency**, so the Pi community can track the 
 ## 🌱 Future DApps (Coming Soon)
 
 ---
-
+Read Our Docs For More Detals : https://tinyurl.com/mrwaindocs
 **Built with ❤️ by the mrwain Organization**  
 🌐 Empowering the Pi Network through real utility and vision
