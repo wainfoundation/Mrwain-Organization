@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Mrwain Organization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2a44;
+            background-color: #f7f9fc;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #e6e8eb;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0052cc;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            color: #1f2a44;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a:focus {
+            color: #0052cc;
+        }
+
+        /* Thank You Section */
+        .thank-you-section {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+        .thank-you-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .thank-you-section img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        .thank-you-section p {
+            font-size: 1.1rem;
+            color: #4b5e7a;
+            margin-bottom: 1.5rem;
+        }
+        .thank-you-section a {
+            display: inline-block;
+            background: #0052cc;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .thank-you-section a:hover, .thank-you-section a:focus {
+            background: #003d99;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 4rem 2rem;
+        }
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .footer-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 180px;
+        }
+        .footer-column h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column a {
+            color: #e6e8eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover, .footer-column a:focus {
+            color: #fff;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .social-links span {
+            font-size: 0.9rem;
+            color: #e6e8eb;
+        }
+        .social-links a {
+            color: #e6e8eb;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover, .social-links a:focus {
+            color: #fff;
+        }
+        .legal-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .legal-links a {
+            color: #e6e8eb;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+        .legal-links a:hover, .legal-links a:focus {
+            color: #fff;
+        }
+        .copyright-lang {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .copyright-lang span {
+            font-size: 0.85rem;
+            color: #e6e8eb;
+        }
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .lang-icon {
+            font-size: 0.9rem;
+        }
+        .language-selector select {
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .language-selector select:focus {
+            outline: none;
+            background: #444;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .thank-you-section h1 {
+                font-size: 2rem;
+            }
+            .thank-you-section img {
+                max-width: 250px;
+            }
+            .thank-you-section p {
+                font-size: 1rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .footer-columns {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-column {
+                min-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .social-links, .legal-links, .copyright-lang {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .legal-links {
+                justify-content: center;
+            }
+            .copyright-lang {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Mrwain Organization</div>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="dapps.html">DApps</a></li>
+                    <li><a href="ledger.html">Ledger</a></li>
+                    <li><a href="donation.html">Donations</a></li>
+                    <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                    <li><a href="future-plans.html">Future Plans</a></li>
+                    <li><a href="announcement.html">Announcements</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="community.html">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <h1>Thank You for Your Donation!</h1>
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXZmZXFkbzUyN3NkbWVrNW1ndjJ2eTEwMW80dTV2cmllcjJpcTljaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/a1cph23tkugk1ukxoL/giphy.gif" alt="Thank You Animation">
+        <p>Your generous contribution helps us develop new DApps, enhance transparency, and grow the Pi ecosystem.</p>
+        <p>If you donated via PayPal, you'll receive a confirmation email shortly. For Pi or crypto donations, please allow some time for the transaction to confirm on the blockchain.</p>
+        <a href="index.html">Return to Home</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="about.html">Mrwain Foundation</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="future-plans.html">Roadmap</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>DApps and Transparency</h3>
+                    <ul>
+                        <li><a href="dapps.html">Our DApps</a></li>
+                        <li><a href="ledger.html">Ledger Transparency</a></li>
+                        <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                        <li><a href="donation.html">Donations</a></li>
+                        <li><a href="metrics.html">Transparency Metrics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Developers</h3>
+                    <ul>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="bounties.html">Developer Bounties</a></li>
+                        <li><a href="https://github.com/mrwain" target="_blank">GitHub</a></li>
+                        <li><a href="bug-bounty.html">Bug Bounty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="community.html">Join Our Community</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://discord.gg/mrwain" target="_blank">Discord</a></li>
+                        <li><a href="https://x.com/mrwain" target="_blank">X</a></li>
+                        <li><a href="https://linkedin.com/company/mrwain" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <span>Follow Us:</span>
+                    <a href="https://linkedin.com/company/mrwain" target="_blank" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#e6e8eb">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.028-3.06-1.866-3.06-1.868 0-2.154 1.459-2.154 2.966v5.698h-3v-11h2.879v1.498h.041c.401-.757 1.379-1.557 2.837-1.557 3.034 0 3.593 1.997 3.593 4.597v6.462z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/mrwain" target="_blank" aria-label="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#e6e8eb">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="audits.html">Audit Reports</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="copyright-lang">
+                    <span>© 2025 Mrwain Organization</span>
+                    <div class="language-selector">
+                        <span class="lang-icon">🌐</span>
+                        <select aria-label="Select language">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
