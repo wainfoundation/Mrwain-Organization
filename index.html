@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mrwain Organization - Transparent Pi Ecosystem</title>
+    <meta name="description" content="Mrwain Organization empowers the Pi community with secure custodial wallets, open documentation, and innovative DApps for a transparent decentralized economy.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -55,6 +56,26 @@
         }
         nav a:hover, nav a:focus {
             color: #0052cc;
+        }
+        nav a[aria-current="page"] {
+            color: #0052cc;
+            font-weight: 700;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .hamburger svg {
+            vertical-align: middle;
+        }
+        .main-nav {
+            transition: transform 0.3s ease-in-out;
         }
 
         /* Hero Section */
@@ -901,7 +922,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Design */
+        /* Responsive Design with Mobile Menu */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -912,10 +933,6 @@
             .cta-buttons {
                 flex-direction: column;
             }
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
             .feature-card, .dapp-card, .testimonial-card, .community-card, .reward-card, .fame-card, .bounty-card, .announcement-card {
                 padding: 1.5rem;
             }
@@ -923,11 +940,40 @@
                 flex-direction: column;
                 gap: 1rem;
             }
-            .ledger-table, .wallet-table {
+            .ledger-table {
                 font-size: 0.9rem;
             }
             .timeline {
                 gap: 1rem;
+            }
+            /* Mobile Menu Styles */
+            .hamburger {
+                display: block;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                transform: translateX(100%);
+                z-index: 1000;
+                padding: 5rem 2rem;
+                overflow-y: auto;
+            }
+            .main-nav.active {
+                transform: translateX(0);
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+            nav a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                display: block;
             }
             /* Footer Responsive */
             .footer-columns {
@@ -962,9 +1008,20 @@
     <header>
         <div class="nav-container">
             <div class="logo">Mrwain Organization</div>
-            <nav aria-label="Main navigation">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2" style="display: none;">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <nav aria-label="Main navigation" class="main-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
                     <li><a href="vision.html">Vision</a></li>
                     <li><a href="mission.html">Mission</a></li>
                     <li><a href="dapps.html">DApps</a></li>
@@ -1460,5 +1517,31 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.main-nav');
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
+        const closeIcon = document.querySelector('.close-icon');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            const isExpanded = nav.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            hamburgerIcon.style.display = isExpanded ? 'none' : 'block';
+            closeIcon.style.display = isExpanded ? 'block' : 'none';
+        });
+
+        // Close menu when a link is clicked
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
