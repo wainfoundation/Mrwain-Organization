@@ -20,6 +20,9 @@
             background-color: #f7f9fc;
             scroll-behavior: smooth;
         }
+        body.no-scroll {
+            overflow: hidden;
+        }
 
         /* Header */
         header {
@@ -53,8 +56,9 @@
             font-size: 1rem;
             font-weight: 500;
             transition: color 0.3s ease;
+            touch-action: manipulation;
         }
-        nav a:hover, nav a:focus {
+        nav a:hover, nav a:focus, nav a:active {
             color: #0052cc;
         }
         nav a[aria-current="page"] {
@@ -72,10 +76,37 @@
             z-index: 1001;
         }
         .hamburger svg {
-            vertical-align: middle;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .hamburger .hamburger-icon.active {
+            transform: rotate(45deg);
+            opacity: 0;
+        }
+        .hamburger .close-icon {
+            display: none;
+        }
+        .hamburger .close-icon.active {
+            display: block;
+            transform: rotate(0deg);
         }
         .main-nav {
-            transition: transform 0.3s ease-in-out;
+            transition: right 0.3s ease-in-out;
+        }
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        .backdrop.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Hero Section */
@@ -111,7 +142,9 @@
             border: none;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+            touch-action: manipulation;
+            will-change: transform;
         }
         .cta.secondary {
             background: transparent;
@@ -120,10 +153,14 @@
         }
         .cta:hover, .cta:focus {
             background: #003d99;
-            transform: translateY(-2px);
+            transform: scale(1.05);
         }
         .cta.secondary:hover, .cta.secondary:focus {
             background: #e6f0fa;
+            transform: scale(1.05);
+        }
+        .cta:active {
+            transform: scale(0.95);
         }
 
         /* Vision Section */
@@ -132,7 +169,7 @@
             margin: 4rem auto;
             padding: 0 2rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .vision h2 {
             font-size: 2.2rem;
@@ -156,7 +193,7 @@
             border-radius: 12px;
             padding: 3rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .mission h2 {
             font-size: 2.2rem;
@@ -180,7 +217,7 @@
             border-radius: 12px;
             padding: 3rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .donation h2 {
             font-size: 2.2rem;
@@ -208,16 +245,12 @@
             border-radius: 8px;
             width: 250px;
             text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
         }
-        .reward-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 0.5rem;
-        }
-        .reward-card p {
-            font-size: 0.95rem;
-            color: #4b5e7a;
+        .reward-card:hover, .reward-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         /* Hall of Fame Section */
@@ -225,7 +258,7 @@
             max-width: 1280px;
             margin: 4rem auto;
             padding: 0 2rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .hall-of-fame h2 {
             text-align: center;
@@ -245,6 +278,12 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .fame-card:hover, .fame-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .fame-card h3 {
             font-size: 1.3rem;
@@ -271,7 +310,7 @@
             max-width: 1280px;
             margin: 4rem auto;
             padding: 0 2rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .features h2 {
             text-align: center;
@@ -292,8 +331,9 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
         }
-        .feature-card:hover, .feature-card:focus-within {
+        .feature-card:hover, .feature-card:active {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
@@ -313,9 +353,11 @@
             border: none;
             font-weight: 600;
             cursor: pointer;
+            transition: transform 0.2s ease;
         }
-        .feature-card button:hover, .feature-card button:focus {
+        .feature-card button:hover, .feature-card button:focus, .feature-card button:active {
             text-decoration: underline;
+            transform: scale(1.05);
         }
 
         /* DApps Section */
@@ -326,7 +368,7 @@
             background: #fff;
             border-radius: 12px;
             padding: 3rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .dapps h2 {
             text-align: center;
@@ -346,8 +388,9 @@
             border-radius: 12px;
             text-align: left;
             transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .dapp-card:hover, .dapp-card:focus-within {
+        .dapp-card:hover, .dapp-card:active {
             transform: translateY(-5px);
         }
         .dapp-card h3 {
@@ -372,9 +415,11 @@
             border: none;
             font-weight: 600;
             cursor: pointer;
+            transition: transform 0.2s ease;
         }
-        .dapp-card button:hover, .dapp-card button:focus {
+        .dapp-card button:hover, .dapp-card button:focus, .dapp-card button:active {
             text-decoration: underline;
+            transform: scale(1.05);
         }
 
         /* Ledger Transparency Section */
@@ -382,7 +427,7 @@
             max-width: 1280px;
             margin: 4rem auto;
             padding: 0 2rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .ledger h2 {
             text-align: center;
@@ -412,9 +457,11 @@
         .ledger-table td a {
             color: #0052cc;
             text-decoration: none;
+            transition: transform 0.2s ease;
         }
-        .ledger-table td a:hover, .ledger-table td a:focus {
+        .ledger-table td a:hover, .ledger-table td a:focus, .ledger-table td a:active {
             text-decoration: underline;
+            transform: scale(1.05);
         }
 
         /* Future Plans Section */
@@ -425,7 +472,7 @@
             background: #fff;
             border-radius: 12px;
             padding: 3rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .future-plans h2 {
             text-align: center;
@@ -444,16 +491,11 @@
             padding: 1.5rem;
             border-radius: 8px;
             text-align: left;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .timeline-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 0.5rem;
-        }
-        .timeline-item p {
-            font-size: 1rem;
-            color: #4b5e7a;
+        .timeline-item:hover, .timeline-item:active {
+            transform: translateY(-5px);
         }
 
         /* Announcements Section */
@@ -465,7 +507,7 @@
             border-radius: 12px;
             padding: 3rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .announcements h2 {
             font-size: 2.2rem;
@@ -490,21 +532,11 @@
             padding: 1.5rem;
             border-radius: 8px;
             text-align: left;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .announcement-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 0.5rem;
-        }
-        .announcement-card .date {
-            font-size: 0.9rem;
-            color: #0052cc;
-            margin-bottom: 1rem;
-        }
-        .announcement-card p {
-            font-size: 1rem;
-            color: #4b5e7a;
+        .announcement-card:hover, .announcement-card:active {
+            transform: translateY(-5px);
         }
 
         /* About Foundation Section */
@@ -513,7 +545,7 @@
             margin: 4rem auto;
             padding: 0 2rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .about-foundation h2 {
             font-size: 2.2rem;
@@ -537,7 +569,7 @@
             background: #fff;
             border-radius: 12px;
             padding: 3rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .bounties h2 {
             text-align: center;
@@ -556,16 +588,11 @@
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .bounty-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 1rem;
-        }
-        .bounty-card p {
-            font-size: 1rem;
-            color: #4b5e7a;
+        .bounty-card:hover, .bounty-card:active {
+            transform: translateY(-5px);
         }
 
         /* Community Engagement Section */
@@ -576,7 +603,7 @@
             background: #fff;
             border-radius: 12px;
             padding: 3rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .community h2 {
             text-align: center;
@@ -595,16 +622,11 @@
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .community-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 1rem;
-        }
-        .community-card p {
-            font-size: 1rem;
-            color: #4b5e7a;
+        .community-card:hover, .community-card:active {
+            transform: translateY(-5px);
         }
 
         /* Transparency Metrics Section */
@@ -613,7 +635,7 @@
             margin: 4rem auto;
             padding: 0 2rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .metrics h2 {
             font-size: 2.2rem;
@@ -631,16 +653,11 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .metric-card h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0052cc;
-            margin-bottom: 0.5rem;
-        }
-        .metric-card p {
-            font-size: 1rem;
-            color: #4b5e7a;
+        .metric-card:hover, .metric-card:active {
+            transform: translateY(-5px);
         }
 
         /* Trust Badges Section */
@@ -649,7 +666,7 @@
             margin: 4rem auto;
             padding: 0 2rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .trust-badges h3 {
             font-size: 1.8rem;
@@ -670,6 +687,11 @@
             font-size: 1rem;
             color: #1f2a44;
             font-weight: 500;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .badge:hover, .badge:active {
+            transform: translateY(-5px);
         }
 
         /* Testimonials Section */
@@ -680,7 +702,7 @@
             background: #fff;
             border-radius: 12px;
             padding: 3rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .testimonials h2 {
             text-align: center;
@@ -699,16 +721,11 @@
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .testimonial-card p {
-            font-size: 1rem;
-            color: #4b5e7a;
-            margin-bottom: 1rem;
-        }
-        .testimonial-card .author {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #1f2a44;
+        .testimonial-card:hover, .testimonial-card:active {
+            transform: translateY(-5px);
         }
 
         /* FAQ Section */
@@ -716,7 +733,7 @@
             max-width: 1280px;
             margin: 4rem auto;
             padding: 0 2rem;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .faq h2 {
             text-align: center;
@@ -731,16 +748,11 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
-        .faq-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 0.5rem;
-        }
-        .faq-item p {
-            font-size: 1rem;
-            color: #4b5e7a;
+        .faq-item:hover, .faq-item:active {
+            transform: translateY(-5px);
         }
 
         /* Pi Ecosystem Impact Section */
@@ -752,7 +764,7 @@
             border-radius: 12px;
             padding: 3rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .impact h2 {
             font-size: 2.2rem;
@@ -777,7 +789,7 @@
             border-radius: 12px;
             text-align: center;
             color: #fff;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .cta-banner h2 {
             font-size: 2rem;
@@ -799,10 +811,15 @@
             border: none;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+            will-change: transform;
         }
         .cta-banner button:hover, .cta-banner button:focus {
             background: #e6e8eb;
+            transform: scale(1.05);
+        }
+        .cta-banner button:active {
+            transform: scale(0.95);
         }
 
         /* Footer (Stellar-Inspired) */
@@ -841,10 +858,11 @@
             text-decoration: none;
             font-size: 0.9rem;
             line-height: 2;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
-        .footer-column a:hover, .footer-column a:focus {
+        .footer-column a:hover, .footer-column a:focus, .footer-column a:active {
             color: #fff;
+            transform: translateX(5px);
         }
         .footer-bottom {
             display: flex;
@@ -866,10 +884,11 @@
         }
         .social-links a {
             color: #e6e8eb;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
-        .social-links a:hover, .social-links a:focus {
+        .social-links a:hover, .social-links a:focus, .social-links a:active {
             color: #fff;
+            transform: scale(1.2);
         }
         .legal-links {
             display: flex;
@@ -880,10 +899,11 @@
             color: #e6e8eb;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
-        .legal-links a:hover, .legal-links a:focus {
+        .legal-links a:hover, .legal-links a:focus, .legal-links a:active {
             color: #fff;
+            transform: translateX(5px);
         }
         .copyright-lang {
             display: flex;
@@ -910,6 +930,7 @@
             padding: 0.25rem;
             font-size: 0.85rem;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
         .language-selector select:focus {
             outline: none;
@@ -921,8 +942,38 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes staggerIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .main-nav.active li {
+            animation: staggerIn 0.3s ease-out forwards;
+        }
+        .main-nav.active li:nth-child(1) { animation-delay: 0.1s; }
+        .main-nav.active li:nth-child(2) { animation-delay: 0.15s; }
+        .main-nav.active li:nth-child(3) { animation-delay: 0.2s; }
+        .main-nav.active li:nth-child(4) { animation-delay: 0.25s; }
+        .main-nav.active li:nth-child(5) { animation-delay: 0.3s; }
+        .main-nav.active li:nth-child(6) { animation-delay: 0.35s; }
+        .main-nav.active li:nth-child(7) { animation-delay: 0.4s; }
+        .main-nav.active li:nth-child(8) { animation-delay: 0.45s; }
+        .main-nav.active li:nth-child(9) { animation-delay: 0.5s; }
+        .main-nav.active li:nth-child(10) { animation-delay: 0.55s; }
+        .main-nav.active li:nth-child(11) { animation-delay: 0.6s; }
 
-        /* Responsive Design with Mobile Menu */
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate, .main-nav.active li, .cta, .feature-card, .dapp-card, .reward-card, .fame-card, .bounty-card, .announcement-card, .timeline-item, .badge, .testimonial-card, .faq-item, .footer-column a, .social-links a, .legal-links a {
+                animation: none;
+                transition: none;
+                transform: none;
+            }
+        }
+
+        /* Responsive Design with Enhanced Mobile Menu */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -953,17 +1004,17 @@
             .main-nav {
                 position: fixed;
                 top: 0;
-                left: 0;
-                width: 100%;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
                 height: 100%;
                 background: #fff;
-                transform: translateX(100%);
                 z-index: 1000;
                 padding: 5rem 2rem;
-                overflow-y: auto;
+                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
             }
             .main-nav.active {
-                transform: translateX(0);
+                right: 0;
             }
             nav ul {
                 flex-direction: column;
@@ -971,9 +1022,11 @@
                 align-items: center;
             }
             nav a {
-                font-size: 1.2rem;
-                padding: 0.5rem;
+                font-size: 1.3rem;
+                padding: 0.75rem;
                 display: block;
+                width: 100%;
+                text-align: center;
             }
             /* Footer Responsive */
             .footer-columns {
@@ -1004,6 +1057,9 @@
     </style>
 </head>
 <body>
+    <!-- Backdrop for Mobile Menu -->
+    <div class="backdrop"></div>
+
     <!-- Header -->
     <header>
         <div class="nav-container">
@@ -1014,7 +1070,7 @@
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
-                <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2" style="display: none;">
+                <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -1518,29 +1574,66 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Mobile Menu and Animations -->
     <script>
+        // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const nav = document.querySelector('.main-nav');
+        const backdrop = document.querySelector('.backdrop');
+        const body = document.body;
         const hamburgerIcon = document.querySelector('.hamburger-icon');
         const closeIcon = document.querySelector('.close-icon');
 
         hamburger.addEventListener('click', () => {
             nav.classList.toggle('active');
+            backdrop.classList.toggle('active');
+            body.classList.toggle('no-scroll');
             const isExpanded = nav.classList.contains('active');
             hamburger.setAttribute('aria-expanded', isExpanded);
-            hamburgerIcon.style.display = isExpanded ? 'none' : 'block';
-            closeIcon.style.display = isExpanded ? 'block' : 'none';
+            hamburgerIcon.classList.toggle('active', isExpanded);
+            closeIcon.classList.toggle('active', isExpanded);
         });
 
-        // Close menu when a link is clicked
+        // Close menu on link click or backdrop click
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
+                backdrop.classList.remove('active');
+                body.classList.remove('no-scroll');
                 hamburger.setAttribute('aria-expanded', 'false');
-                hamburgerIcon.style.display = 'block';
-                closeIcon.style.display = 'none';
+                hamburgerIcon.classList.remove('active');
+                closeIcon.classList.remove('active');
             });
+        });
+
+        backdrop.addEventListener('click', () => {
+            nav.classList.remove('active');
+            backdrop.classList.remove('active');
+            body.classList.remove('no-scroll');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.classList.remove('active');
+            closeIcon.classList.remove('active');
+        });
+
+        // Scroll-Triggered Animations
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
