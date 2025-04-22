@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donations - Mrwain Organization</title>
+    <meta name="description" content="Support the Mrwain Organization’s mission to build DApps for the Pi Network through donations via PayPal, Pi, or cryptocurrencies.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -19,15 +20,19 @@
             background-color: #f7f9fc;
             scroll-behavior: smooth;
         }
+        body.no-scroll {
+            overflow: hidden;
+        }
 
         /* Header */
         header {
             background-color: #fff;
             border-bottom: 1px solid #e6e8eb;
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .nav-container {
             max-width: 1280px;
@@ -37,10 +42,89 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #0052cc;
+            text-align: center;
+            flex: 1;
         }
+        .profile-icon {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .profile-icon svg {
+            fill: #1f2a44;
+            transition: transform 0.2s ease;
+        }
+        .profile-icon:hover svg, .profile-icon:focus svg {
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .hamburger .hamburger-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        .hamburger .hamburger-icon span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #1f2a44;
+            position: absolute;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger .hamburger-icon span:nth-child(1) {
+            top: 6px;
+        }
+        .hamburger .hamburger-icon span:nth-child(2) {
+            top: 11px;
+        }
+        .hamburger .hamburger-icon span:nth-child(3) {
+            top: 16px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        .main-nav {
+            transition: left 0.3s ease-in-out;
+        }
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        .backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Navigation Styles */
         nav ul {
             list-style: none;
             display: flex;
@@ -52,9 +136,14 @@
             font-size: 1rem;
             font-weight: 500;
             transition: color 0.3s ease;
+            touch-action: manipulation;
         }
-        nav a:hover, nav a:focus {
+        nav a:hover, nav a:focus, nav a:active {
             color: #0052cc;
+        }
+        nav a[aria-current="page"] {
+            color: #0052cc;
+            font-weight: 700;
         }
 
         /* Donation Section */
@@ -63,156 +152,219 @@
             margin: 4rem auto;
             padding: 0 2rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
         .donation-section h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .donation-section p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
             color: #4b5e7a;
-            margin-bottom: 2rem;
         }
         .donation-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            justify-items: center;
+            margin-bottom: 2rem;
         }
         .donation-card {
             background: #fff;
+            padding: 1.5rem;
             border-radius: 12px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 350px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            opacity: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .donation-card:hover {
+        .donation-card:hover, .donation-card:active {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .donation-card h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .donation-card p {
-            font-size: 0.95rem;
-            color: #4b5e7a;
-            margin-bottom: 1.5rem;
-        }
-        .donation-card form, .donation-card a {
-            display: inline-block;
-            margin-top: 1rem;
-        }
-        .donation-card label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: #1f2a44;
             margin-bottom: 0.5rem;
         }
-        .donation-card select, .donation-card input[type="text"] {
-            padding: 0.5rem;
-            border: 1px solid #e6e8eb;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            width: 100%;
+        .donation-card p {
             font-size: 1rem;
+            color: #4b5e7a;
+            margin-bottom: 1rem;
+        }
+        .donation-card label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1f2a44;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .donation-card select, .donation-card input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e6e8eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
             transition: border-color 0.3s ease;
         }
         .donation-card select:focus, .donation-card input[type="text"]:focus {
             border-color: #0052cc;
             outline: none;
         }
-        .donation-card input[type="image"] {
-            border: none;
-        }
-        .donation-card .donate-btn {
-            background: #0052cc;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            border: none;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-        .donation-card .donate-btn:hover, .donation-card .donate-btn:focus {
-            background: #003d99;
-            transform: translateY(-2px);
-        }
-        .donation-card .wallet-address {
-            background: #e6f0fa;
-            padding: 0.5rem;
-            border-radius: 4px;
+        .wallet-address {
+            font-family: monospace;
             font-size: 0.9rem;
+            background: #f7f9fc;
+            padding: 0.5rem;
+            border-radius: 8px;
             word-break: break-all;
             margin-bottom: 1rem;
         }
-        .donation-card .copy-btn {
+        .cta, .donate-btn {
+            background: linear-gradient(135deg, #007bff 0%, #0052cc 100%);
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            border-radius: 10px;
+            border: 2px solid #0052cc;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+            animation: pulse 2s infinite ease-in-out;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, text-shadow 0.2s ease, box-shadow 0.3s ease;
+            touch-action: manipulation;
+            will-change: transform, color, text-shadow, box-shadow;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .cta:hover, .cta:focus, .donate-btn:hover, .donate-btn:focus {
+            background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
+            color: #e6e8eb;
+            transform: scale(1.05);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5);
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+            animation: none;
+        }
+        .cta:active, .donate-btn:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, #003d99 0%, #002b66 100%);
+            color: #f7f9fc;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
+        }
+        .cta:focus, .donate-btn:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+        .cta--secondary, .copy-btn {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+            text-shadow: none;
+            animation: pulse-secondary 2s infinite ease-in-out;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            touch-action: manipulation;
+            will-change: transform, color, box-shadow;
+            display: inline-block;
+            text-decoration: none;
+            margin: 0.5rem 0;
+        }
+        .cta--secondary:hover, .cta--secondary:focus, .copy-btn:hover, .copy-btn:focus {
             background: #e6f0fa;
             color: #0052cc;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            text-shadow: none;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+            outline: 3px solid #0052cc;
+            outline-offset: 2px;
+            animation: none;
         }
-        .donation-card .copy-btn:hover, .donation-card .copy-btn:focus {
-            background: #d1e0fa;
+        .cta--secondary:active, .copy-btn:active {
+            background: #d1e1f5;
+            color: #003d99;
+            box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2);
+            text-shadow: none;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
+            50% { box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5); }
+            100% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
+        }
+        @keyframes pulse-secondary {
+            0% { box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); }
+            50% { box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4); }
+            100% { box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); }
         }
 
         /* Confirmation Message */
-        .confirmation-message {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            z-index: 1000;
-            animation: popIn 0.5s ease-out;
-        }
-        .confirmation-message.active {
-            display: block;
-        }
-        .confirmation-message h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .confirmation-message p {
-            font-size: 1rem;
-            color: #4b5e7a;
-        }
         .overlay {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 2000;
         }
         .overlay.active {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        .confirmation-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 2001;
+            max-width: 90%;
+            width: 400px;
+        }
+        .confirmation-message.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .confirmation-message h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 1rem;
+        }
+        .confirmation-message p {
+            font-size: 1rem;
+            color: #4b5e7a;
+            margin-bottom: 1.5rem;
         }
 
         /* Footer */
         footer {
             background: #000;
             color: #fff;
-            padding: 4rem 2rem;
+            padding: 2rem 1.5rem;
         }
         .footer-content {
             max-width: 1280px;
@@ -221,19 +373,20 @@
         .footer-columns {
             display: flex;
             justify-content: space-between;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .footer-column {
             flex: 1;
-            min-width: 180px;
+            min-width: 160px;
         }
         .footer-column h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
+            color: #fff;
         }
         .footer-column ul {
             list-style: none;
@@ -241,12 +394,15 @@
         .footer-column a {
             color: #e6e8eb;
             text-decoration: none;
-            font-size: 0.9rem;
-            line-height: 2;
-            transition: color 0.3s ease;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: block;
+            padding: 0.25rem 0;
         }
-        .footer-column a:hover, .footer-column a:focus {
+        .footer-column a:hover, .footer-column a:focus, .footer-column a:active {
             color: #fff;
+            transform: translateX(5px);
         }
         .footer-bottom {
             display: flex;
@@ -263,15 +419,17 @@
             gap: 1rem;
         }
         .social-links span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #e6e8eb;
         }
         .social-links a {
             color: #e6e8eb;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
         }
-        .social-links a:hover, .social-links a:focus {
+        .social-links a:hover, .social-links a:focus, .social-links a:active {
             color: #fff;
+            transform: scale(1.2);
         }
         .legal-links {
             display: flex;
@@ -281,11 +439,13 @@
         .legal-links a {
             color: #e6e8eb;
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
+            font-size: 0.8rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
         }
-        .legal-links a:hover, .legal-links a:focus {
+        .legal-links a:hover, .legal-links a:focus, .legal-links a:active {
             color: #fff;
+            transform: translateX(5px);
         }
         .copyright-lang {
             display: flex;
@@ -293,7 +453,7 @@
             gap: 1rem;
         }
         .copyright-lang span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #e6e8eb;
         }
         .language-selector {
@@ -302,7 +462,7 @@
             gap: 0.5rem;
         }
         .lang-icon {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .language-selector select {
             background: #333;
@@ -310,8 +470,9 @@
             border: none;
             border-radius: 4px;
             padding: 0.25rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
         .language-selector select:focus {
             outline: none;
@@ -323,39 +484,137 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes popIn {
-            from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes staggerIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .donation-section h1.animate, .donation-card h2.animate {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .main-nav.active li {
+            animation: staggerIn 0.3s ease-out forwards;
+        }
+        .main-nav.active li:nth-child(1) { animation-delay: 0.1s; }
+        .main-nav.active li:nth-child(2) { animation-delay: 0.15s; }
+        .main-nav.active li:nth-child(3) { animation-delay: 0.2s; }
+        .main-nav.active li:nth-child(4) { animation-delay: 0.25s; }
+        .main-nav.active li:nth-child(5) { animation-delay: 0.3s; }
+        .main-nav.active li:nth-child(6) { animation-delay: 0.35s; }
+        .main-nav.active li:nth-child(7) { animation-delay: 0.4s; }
+        .main-nav.active li:nth-child(8) { animation-delay: 0.45s; }
+        .main-nav.active li:nth-child(9) { animation-delay: 0.5s; }
+        .main-nav.active li:nth-child(10) { animation-delay: 0.55s; }
+        .main-nav.active li:nth-child(11) { animation-delay: 0.6s; }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate, .main-nav.active li, .donation-section h1.animate, .donation-card h2.animate, .donation-card, .cta, .cta--secondary, .donate-btn, .copy-btn, .footer-column a, .social-links a, .legal-links a {
+                animation: none;
+                transition: none;
+                transform: none;
+            }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            .profile-icon {
+                display: block;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 280px;
+                height: 100%;
+                background: #fff;
+                z-index: 1000;
+                padding: 4rem 1.5rem;
+                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-nav.active {
+                left: 0;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            nav a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+                border-radius: 4px;
+                transition: background 0.3s ease, color 0.3s ease;
+            }
+            nav a:hover, nav a:focus, nav a:active {
+                background: #e6f0fa;
+                color: #0052cc;
+            }
             .donation-section h1 {
                 font-size: 2rem;
             }
             .donation-section p {
                 font-size: 1rem;
             }
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .donation-options {
-                grid-template-columns: 1fr;
-            }
             .donation-card {
-                max-width: 100%;
+                padding: 1rem;
+            }
+            .donation-card h2 {
+                font-size: 1.4rem;
+            }
+            .donation-card p, .donation-card label {
+                font-size: 0.9rem;
+            }
+            .wallet-address {
+                font-size: 0.85rem;
+            }
+            .cta, .cta--secondary, .donate-btn, .copy-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+            .confirmation-message {
+                width: 90%;
+                padding: 1.5rem;
+            }
+            .confirmation-message h3 {
+                font-size: 1.4rem;
+            }
+            .confirmation-message p {
+                font-size: 0.9rem;
             }
             .footer-columns {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             .footer-column {
                 min-width: 100%;
             }
             .footer-bottom {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 gap: 1rem;
             }
             .social-links, .legal-links, .copyright-lang {
@@ -365,6 +624,7 @@
             }
             .legal-links {
                 justify-content: center;
+                gap: 0.5rem;
             }
             .copyright-lang {
                 flex-direction: column;
@@ -374,18 +634,33 @@
     </style>
 </head>
 <body>
+    <!-- Backdrop for Mobile Menu -->
+    <div class="backdrop"></div>
+
     <!-- Header -->
     <header>
         <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
             <div class="logo">Mrwain Organization</div>
-            <nav aria-label="Main navigation">
+            <button class="profile-icon" aria-label="User profile">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </button>
+            <nav aria-label="Main navigation" class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="vision.html">Vision</a></li>
                     <li><a href="mission.html">Mission</a></li>
                     <li><a href="dapps.html">DApps</a></li>
                     <li><a href="ledger.html">Ledger</a></li>
-                    <li><a href="donation.html">Donations</a></li>
+                    <li><a href="donation.html" aria-current="page">Donations</a></li>
                     <li><a href="hall-of-fame.html">Hall of Fame</a></li>
                     <li><a href="future-plans.html">Future Plans</a></li>
                     <li><a href="announcement.html">Announcements</a></li>
@@ -399,13 +674,13 @@
     <!-- Donation Section -->
     <section class="donation-section">
         <h1>Support Our Mission</h1>
-        <p>Your donation helps us develop new DApps, enhance transparency, and grow the Pi ecosystem. Choose your preferred method below.</p>
+        <p>Your donation helps us develop new <a href="dapps.html">DApps</a>, enhance <a href="ledger.html">transparency</a>, and grow the <a href="https://minepi.com" target="_blank">Pi ecosystem</a>. Choose your preferred method below.</p>
         <div class="donation-options">
             <!-- PayPal Donation (Dynamic Button Based on Amount) -->
             <div class="donation-card">
                 <h2>Donate with PayPal</h2>
                 <p>Support us using PayPal in your preferred currency.</p>
-                <form id="paypalForm" action="" method="post" target="_top">
+                <form id="paypalForm" action="https://www.paypal.com/donate" method="post" target="_top">
                     <input type="hidden" name="business" value="donations@mrwain.org">
                     <input type="hidden" name="no_recurring" value="0">
                     <input type="hidden" name="item_name" value="Mrwain Organization Donation">
@@ -436,8 +711,8 @@
                 <h2>Donate with Pi</h2>
                 <p>Send Pi directly to our wallet via the Pi Browser.</p>
                 <p class="wallet-address">mrwain_pi_donation</p>
-                <button class="copy-btn" onclick="copyToClipboard('mrwain_pi_donation')">Copy Address</button>
-                <button class="donate-btn" onclick="openPiWallet()">Donate via Pi Browser</button>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('mrwain_pi_donation')">Copy Address</button>
+                <button class="donate-btn cta" onclick="openPiWallet()">Donate via Pi Browser</button>
             </div>
 
             <!-- Other Cryptocurrencies -->
@@ -446,11 +721,11 @@
                 <p>Support us with other cryptocurrencies like BTC, ETH, or USDT.</p>
                 <label>BTC Address:</label>
                 <p class="wallet-address">bc1qmrwaindonation...</p>
-                <button class="copy-btn" onclick="copyToClipboard('bc1qmrwaindonation...')">Copy Address</button>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('bc1qmrwaindonation...')">Copy Address</button>
                 <label>ETH/USDT Address:</label>
                 <p class="wallet-address">0xmrwaindonation...</p>
-                <button class="copy-btn" onclick="copyToClipboard('0xmrwaindonation...')">Copy Address</button>
-                <a href="mailto:donations@mrwain.org" class="donate-btn">Contact for Details</a>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('0xmrwaindonation...')">Copy Address</button>
+                <a href="mailto:donations@mrwain.org" class="donate-btn cta">Contact for Details</a>
             </div>
         </div>
     </section>
@@ -482,7 +757,7 @@
                         <li><a href="dapps.html">Our DApps</a></li>
                         <li><a href="ledger.html">Ledger Transparency</a></li>
                         <li><a href="hall-of-fame.html">Hall of Fame</a></li>
-                        <li><a href="donation.html">Donations</a></li>
+                        <li><a href="donation.html" aria-current="page">Donations</a></li>
                         <li><a href="metrics.html">Transparency Metrics</a></li>
                     </ul>
                 </div>
@@ -548,64 +823,101 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Dynamic PayPal Button, Pi Wallet, and Copy Functionality -->
+    <!-- JavaScript for Mobile Menu, Animations, and Donation Functions -->
     <script>
-        function updatePaypalButton() {
-            const amountSelect = document.getElementById('amount-paypal');
-            const paypalForm = document.getElementById('paypalForm');
-            const paypalButton = document.getElementById('paypalButton');
-            const amount = amountSelect.value;
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.main-nav');
+        const backdrop = document.querySelector('.backdrop');
+        const body = document.body;
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
 
-            // Define different PayPal links based on amount
-            const paypalLinks = {
-                '5.00': 'https://www.paypal.com/donate?hosted_button_id=5_DONATION_LINK', // Replace with actual $5 link
-                '25.00': 'https://www.paypal.com/donate?hosted_button_id=25_DONATION_LINK', // Replace with actual $25 link
-                '50.00': 'https://www.paypal.com/donate?hosted_button_id=50_DONATION_LINK', // Replace with actual $50 link
-                '': 'https://www.paypal.com/donate?hosted_button_id=CUSTOM_DONATION_LINK' // Replace with actual custom link
-            };
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            backdrop.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+            const isExpanded = nav.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            hamburgerIcon.classList.toggle('active', isExpanded);
+        });
 
-            const paypalButtons = {
-                '5.00': 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif', // Default PayPal button
-                '25.00': 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif', // Different button style
-                '50.00': 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif', // Smaller button style
-                '': 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif' // Default for custom
-            };
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                backdrop.classList.remove('active');
+                body.classList.remove('no-scroll');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.classList.remove('active');
+            });
+        });
 
-            // Update the form action and button image based on selected amount
-            paypalForm.action = paypalLinks[amount] || paypalLinks[''];
-            paypalButton.src = paypalButtons[amount] || paypalButtons[''];
-        }
+        backdrop.addEventListener('click', () => {
+            nav.classList.remove('active');
+            backdrop.classList.remove('active');
+            body.classList.remove('no-scroll');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.classList.remove('active');
+        });
 
-        function openPiWallet() {
-            // Attempt to open Pi Browser wallet with the wallet address
-            const walletAddress = 'mrwain_pi_donation';
-            const piUrl = `pi://pay?address=${walletAddress}`;
-            window.location.href = piUrl;
+        // Scroll-Triggered Animations
+        const sections = document.querySelectorAll('section, .donation-card');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-            // Fallback if Pi Browser is not installed
-            setTimeout(() => {
-                if (document.hasFocus()) {
-                    alert('Please install the Pi Browser to donate with Pi.');
-                    window.location.href = 'https://minepi.com/';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
                 }
-            }, 1000);
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Donation Functions
+        function updatePaypalButton() {
+            const amount = document.getElementById('amount-paypal').value;
+            const paypalButtonContainer = document.getElementById('paypalButtonContainer');
+            if (amount === '') {
+                paypalButtonContainer.innerHTML = `
+                    <input type="text" name="amount" placeholder="Enter custom amount" style="width: 100%; padding: 0.75rem; border: 1px solid #e6e8eb; border-radius: 8px; margin-bottom: 1rem;">
+                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
+                    <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+                `;
+            } else {
+                paypalButtonContainer.innerHTML = `
+                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
+                    <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+                `;
+            }
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                const confirmationMessage = document.getElementById('confirmationMessage');
                 const overlay = document.getElementById('overlay');
-                confirmationMessage.classList.add('active');
+                const confirmationMessage = document.getElementById('confirmationMessage');
                 overlay.classList.add('active');
+                confirmationMessage.classList.add('active');
                 setTimeout(() => {
-                    confirmationMessage.classList.remove('active');
                     overlay.classList.remove('active');
+                    confirmationMessage.classList.remove('active');
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
             });
         }
 
-        // Initialize PayPal button on page load
-        window.onload = updatePaypalButton;
+        function openPiWallet() {
+            const walletAddress = 'mrwain_pi_donation';
+            const piWalletUrl = `pi://wallet?address=${encodeURIComponent(walletAddress)}`;
+            window.location.href = piWalletUrl;
+        }
     </script>
 </body>
 </html>
