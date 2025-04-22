@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found - Mrwain Organization</title>
+    <title>404 - Page Not Found | Mrwain Organization</title>
+    <meta name="description" content="The page you are looking for cannot be found. Return to the Mrwain Organization homepage to explore our Pi ecosystem DApps and transparent initiatives.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -19,15 +20,19 @@
             background-color: #f7f9fc;
             scroll-behavior: smooth;
         }
+        body.no-scroll {
+            overflow: hidden;
+        }
 
         /* Header */
         header {
             background-color: #fff;
             border-bottom: 1px solid #e6e8eb;
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .nav-container {
             max-width: 1280px;
@@ -37,10 +42,89 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #0052cc;
+            text-align: center;
+            flex: 1;
         }
+        .profile-icon {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .profile-icon svg {
+            fill: #1f2a44;
+            transition: transform 0.2s ease;
+        }
+        .profile-icon:hover svg, .profile-icon:focus svg {
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .hamburger .hamburger-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        .hamburger .hamburger-icon span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #1f2a44;
+            position: absolute;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger .hamburger-icon span:nth-child(1) {
+            top: 6px;
+        }
+        .hamburger .hamburger-icon span:nth-child(2) {
+            top: 11px;
+        }
+        .hamburger .hamburger-icon span:nth-child(3) {
+            top: 16px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        .main-nav {
+            transition: left 0.3s ease-in-out;
+        }
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        .backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Navigation Styles */
         nav ul {
             list-style: none;
             display: flex;
@@ -52,54 +136,62 @@
             font-size: 1rem;
             font-weight: 500;
             transition: color 0.3s ease;
+            touch-action: manipulation;
         }
-        nav a:hover, nav a:focus {
+        nav a:hover, nav a:focus, nav a:active {
             color: #0052cc;
+        }
+        nav a[aria-current="page"] {
+            color: #0052cc;
+            font-weight: 700;
         }
 
         /* 404 Section */
-        .error-section {
+        .error-404 {
             max-width: 1280px;
             margin: 4rem auto;
             padding: 0 2rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            opacity: 0;
         }
-        .error-section h1 {
-            font-size: 2.5rem;
+        .error-404 h1 {
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .error-section .tenor-gif-embed {
-            margin: 1.5rem auto;
-            max-width: 300px;
-            width: 100%;
-        }
-        .error-section p {
-            font-size: 1.1rem;
-            color: #4b5e7a;
+            color: #1f2a44;
             margin-bottom: 1.5rem;
+            transition: transform 0.5s ease;
         }
-        .error-section a {
-            display: inline-block;
+        .error-404 p {
+            font-size: 1.2rem;
+            color: #4b5e7a;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cta {
             background: #0052cc;
             color: #fff;
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 8px;
-            text-decoration: none;
+            border: none;
             font-weight: 600;
-            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            touch-action: manipulation;
+            will-change: transform;
         }
-        .error-section a:hover, .error-section a:focus {
+        .cta:hover, .cta:focus {
             background: #003d99;
-            transform: translateY(-2px);
+            transform: scale(1.05);
+        }
+        .cta:active {
+            transform: scale(0.95);
         }
 
         /* Footer */
         footer {
             background: #000;
             color: #fff;
-            padding: 4rem 2rem;
+            padding: 2rem 1.5rem;
         }
         .footer-content {
             max-width: 1280px;
@@ -108,19 +200,20 @@
         .footer-columns {
             display: flex;
             justify-content: space-between;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .footer-column {
             flex: 1;
-            min-width: 180px;
+            min-width: 160px;
         }
         .footer-column h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
+            color: #fff;
         }
         .footer-column ul {
             list-style: none;
@@ -128,12 +221,15 @@
         .footer-column a {
             color: #e6e8eb;
             text-decoration: none;
-            font-size: 0.9rem;
-            line-height: 2;
-            transition: color 0.3s ease;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: block;
+            padding: 0.25rem 0;
         }
-        .footer-column a:hover, .footer-column a:focus {
+        .footer-column a:hover, .footer-column a:focus, .footer-column a:active {
             color: #fff;
+            transform: translateX(5px);
         }
         .footer-bottom {
             display: flex;
@@ -150,15 +246,17 @@
             gap: 1rem;
         }
         .social-links span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #e6e8eb;
         }
         .social-links a {
             color: #e6e8eb;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
         }
-        .social-links a:hover, .social-links a:focus {
+        .social-links a:hover, .social-links a:focus, .social-links a:active {
             color: #fff;
+            transform: scale(1.2);
         }
         .legal-links {
             display: flex;
@@ -168,11 +266,13 @@
         .legal-links a {
             color: #e6e8eb;
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
+            font-size: 0.8rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
         }
-        .legal-links a:hover, .legal-links a:focus {
+        .legal-links a:hover, .legal-links a:focus, .legal-links a:active {
             color: #fff;
+            transform: translateX(5px);
         }
         .copyright-lang {
             display: flex;
@@ -180,7 +280,7 @@
             gap: 1rem;
         }
         .copyright-lang span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #e6e8eb;
         }
         .language-selector {
@@ -189,7 +289,7 @@
             gap: 0.5rem;
         }
         .lang-icon {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .language-selector select {
             background: #333;
@@ -197,8 +297,9 @@
             border: none;
             border-radius: 4px;
             padding: 0.25rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
         .language-selector select:focus {
             outline: none;
@@ -210,32 +311,93 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .error-404 h1.animate {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate, .error-404 h1.animate, .cta, .footer-column a, .social-links a, .legal-links a {
+                animation: none;
+                transition: none;
+                transform: none;
+            }
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .error-section h1 {
-                font-size: 2rem;
+            header {
+                padding: 0.75rem 1rem;
             }
-            .error-section .tenor-gif-embed {
-                max-width: 250px;
+            .hamburger {
+                display: block;
             }
-            .error-section p {
-                font-size: 1rem;
+            .profile-icon {
+                display: block;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 280px;
+                height: 100%;
+                background: #fff;
+                z-index: 1000;
+                padding: 4rem 1.5rem;
+                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-nav.active {
+                left: 0;
             }
             nav ul {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            nav a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+                border-radius: 4px;
+                transition: background 0.3s ease, color 0.3s ease;
+            }
+            nav a:hover, nav a:focus, nav a:active {
+                background: #e6f0fa;
+                color: #0052cc;
+            }
+            .error-404 h1 {
+                font-size: 2.2rem;
+            }
+            .error-404 p {
+                font-size: 1rem;
             }
             .footer-columns {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             .footer-column {
                 min-width: 100%;
             }
             .footer-bottom {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 gap: 1rem;
             }
             .social-links, .legal-links, .copyright-lang {
@@ -245,6 +407,7 @@
             }
             .legal-links {
                 justify-content: center;
+                gap: 0.5rem;
             }
             .copyright-lang {
                 flex-direction: column;
@@ -254,11 +417,26 @@
     </style>
 </head>
 <body>
+    <!-- Backdrop for Mobile Menu -->
+    <div class="backdrop"></div>
+
     <!-- Header -->
     <header>
         <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
             <div class="logo">Mrwain Organization</div>
-            <nav aria-label="Main navigation">
+            <button class="profile-icon" aria-label="User profile">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </button>
+            <nav aria-label="Main navigation" class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="vision.html">Vision</a></li>
@@ -276,16 +454,11 @@
         </div>
     </header>
 
-    <!-- 404 Section -->
-    <section class="error-section">
+    <!-- 404 Error Section -->
+    <section class="error-404">
         <h1>404 - Page Not Found</h1>
-        <div class="tenor-gif-embed" data-postid="13044566016678697586" data-share-method="host" data-aspect-ratio="0.921659" data-width="100%">
-            <a href="https://tenor.com/view/error-404-404-page-not-found-file-not-found-gif-13044566016678697586">Error 404 Page Not Found GIF</a> from <a href="https://tenor.com/search/error+404-gifs">Error 404 GIFs</a>
-        </div>
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-        <p>Oops! It looks like the page you're looking for doesn't exist.</p>
-        <p>Let's get you back on track. Head back to our homepage to explore more about Mrwain Organization.</p>
-        <a href="index.html">Return to Home</a>
+        <p>Oops! The page you're looking for doesn't exist or has been moved. Let's get you back to exploring the Pi ecosystem.</p>
+        <button class="cta" onclick="window.location.href='index.html'">Return to Home</button>
     </section>
 
     <!-- Footer -->
@@ -373,5 +546,64 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Mobile Menu and Animations -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.main-nav');
+        const backdrop = document.querySelector('.backdrop');
+        const body = document.body;
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            backdrop.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+            const isExpanded = nav.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            hamburgerIcon.classList.toggle('active', isExpanded);
+        });
+
+        // Close menu on link click or backdrop click
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                backdrop.classList.remove('active');
+                body.classList.remove('no-scroll');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.classList.remove('active');
+            });
+        });
+
+        backdrop.addEventListener('click', () => {
+            nav.classList.remove('active');
+            backdrop.classList.remove('active');
+            body.classList.remove('no-scroll');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.classList.remove('active');
+        });
+
+        // Scroll-Triggered Animations
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
