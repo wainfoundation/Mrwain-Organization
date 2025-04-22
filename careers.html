@@ -246,23 +246,74 @@
             margin-bottom: 1rem;
         }
         .cta {
-            background: #0052cc;
+            background: linear-gradient(135deg, #007bff 0%, #0052cc 100%);
             color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
+            padding: 1.2rem 2.5rem;
+            border-radius: 10px;
+            border: 2px solid #0052cc;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+            animation: pulse 2s infinite ease-in-out;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, text-shadow 0.2s ease, box-shadow 0.3s ease;
             touch-action: manipulation;
-            will-change: transform;
+            will-change: transform, color, text-shadow, box-shadow;
+            display: inline-block;
+            text-decoration: none;
         }
         .cta:hover, .cta:focus {
-            background: #003d99;
+            background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
+            color: #e6e8eb;
             transform: scale(1.05);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5);
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+            animation: none;
         }
         .cta:active {
             transform: scale(0.95);
+            background: linear-gradient(135deg, #003d99 0%, #002b66 100%);
+            color: #f7f9fc;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
+        }
+        .cta:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+        .cta--secondary {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+            text-shadow: none;
+            animation: pulse-secondary 2s infinite ease-in-out;
+        }
+        .cta--secondary:hover, .cta--secondary:focus {
+            background: #e6f0fa;
+            color: #0052cc;
+            text-shadow: none;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+            outline: 3px solid #0052cc;
+            animation: none;
+        }
+        .cta--secondary:active {
+            background: #d1e1f5;
+            color: #003d99;
+            box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2);
+            text-shadow: none;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
+            50% { box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5); }
+            100% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
+        }
+        @keyframes pulse-secondary {
+            0% { box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); }
+            50% { box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4); }
+            100% { box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); }
         }
 
         /* Footer */
@@ -420,7 +471,7 @@
 
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            .animate, .main-nav.active li, .careers h1.animate, .careers-section h2.animate, .careers-section, .cta, .footer-column a, .social-links a, .legal-links a {
+            .animate, .main-nav.active li, .careers h1.animate, .careers-section h2.animate, .careers-section, .cta, .cta--secondary, .footer-column a, .social-links a, .legal-links a {
                 animation: none;
                 transition: none;
                 transform: none;
@@ -474,7 +525,7 @@
                 border-radius: 4px;
                 transition: background 0.3s ease, color 0.3s ease;
             }
-            nav a:hover, nav a:focus, nav a:active {
+           (nav a:hover, nav a:focus, nav a:active {
                 background: #e6f0fa;
                 color: #0052cc;
             }
@@ -501,6 +552,10 @@
             }
             .cta-section p {
                 font-size: 1.1rem;
+            }
+            .cta, .cta--secondary {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
             }
             .footer-columns {
                 flex-direction: column;
@@ -592,19 +647,19 @@
                 <h3>Blockchain Developer</h3>
                 <p>Design and implement smart contracts for Pi Network DApps. Requires expertise in Solidity, JavaScript, and Web3 technologies.</p>
                 <p><strong>Location</strong>: Remote | <strong>Type</strong>: Full-time</p>
-                <a href="contact.html" class="cta">Apply Now</a>
+                <a href="contact.html" class="cta cta--secondary">Apply Now</a>
             </div>
             <div class="job-listing">
                 <h3>UI/UX Designer</h3>
                 <p>Create intuitive interfaces for our DApps to enhance user experience. Proficiency in Figma and user-centered design principles required.</p>
                 <p><strong>Location</strong>: Remote | <strong>Type</strong>: Part-time</p>
-                <a href="contact.html" class="cta">Apply Now</a>
+                <a href="contact.html" class="cta cta--secondary">Apply Now</a>
             </div>
             <div class="job-listing">
                 <h3>Community Manager</h3>
                 <p>Engage with our <a href="community.html">community</a> on Discord and X, and organize events like hackathons. Strong communication skills needed.</p>
                 <p><strong>Location</strong>: Remote | <strong>Type</strong>: Full-time</p>
-                <a href="contact.html" class="cta">Apply Now</a>
+                <a href="contact.html" class="cta cta--secondary">Apply Now</a>
             </div>
             <p>Don’t see a role that fits? Reach out via our <a href="contact.html">Contact</a> page to express interest.</p>
         </div>
