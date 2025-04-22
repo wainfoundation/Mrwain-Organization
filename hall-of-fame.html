@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hall of Fame - Mrwain Organization</title>
-    <meta name="description" content="Celebrate the outstanding contributors and achievements in the Mrwain Organization’s mission to build DApps for the Pi Network.">
+    <meta name="description" content="Our Hall of Fame is coming soon! Stay tuned as we recognize our top contributors and community champions for the Mrwain Organization.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -161,50 +161,25 @@
             color: #1f2a44;
             transition: transform 0.5s ease;
         }
-        .hall-of-fame p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            color: #4b5e7a;
-        }
-        .fame-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .fame-member {
+        .coming-soon {
             background: #fff;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            text-align: left;
+            text-align: center;
             opacity: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
         }
-        .fame-member:hover, .fame-member:active {
+        .coming-soon:hover, .coming-soon:active {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
-        .fame-member h2 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #1f2a44;
-            margin-bottom: 0.5rem;
-        }
-        .fame-member .role {
-            font-size: 1rem;
+        .coming-soon p {
+            font-size: 1.4rem;
             font-weight: 500;
-            color: #0052cc;
-            margin-bottom: 0.5rem;
-        }
-        .fame-member p {
-            font-size: 1rem;
-            color: #4b5e7a;
-            margin-bottom: 1.5rem;
-        }
-        .fame-member a {
-            text-decoration: none;
+            color: #1f2a44;
+            margin-bottom: 1rem;
         }
         .fame-cta {
             background: #fff;
@@ -236,51 +211,23 @@
             gap: 1rem;
             justify-content: center;
         }
-        .cta {
-            background: linear-gradient(135deg, #007bff 0%, #0052cc 100%);
-            color: #fff;
-            padding: 1.2rem 2.5rem;
-            border-radius: 10px;
-            border: 2px solid #0052cc;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
-            animation: pulse 2s infinite ease-in-out;
-            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, text-shadow 0.2s ease, box-shadow 0.3s ease;
-            touch-action: manipulation;
-            will-change: transform, color, text-shadow, box-shadow;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .cta:hover, .cta:focus {
-            background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
-            color: #e6e8eb;
-            transform: scale(1.05);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5);
-            outline: 3px solid #007bff;
-            outline-offset: 2px;
-            animation: none;
-        }
-        .cta:active {
-            transform: scale(0.95);
-            background: linear-gradient(135deg, #003d99 0%, #002b66 100%);
-            color: #f7f9fc;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
-        }
-        .cta:focus {
-            outline: 3px solid #007bff;
-            outline-offset: 2px;
-        }
         .cta--secondary {
             background: transparent;
             border: 2px solid #007bff;
             color: #007bff;
+            padding: 1.2rem 2.5rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
             box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
             text-shadow: none;
             animation: pulse-secondary 2s infinite ease-in-out;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            touch-action: manipulation;
+            will-change: transform, color, box-shadow;
+            display: inline-block;
+            text-decoration: none;
         }
         .cta--secondary:hover, .cta--secondary:focus {
             background: #e6f0fa;
@@ -288,6 +235,7 @@
             text-shadow: none;
             box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
             outline: 3px solid #0052cc;
+            outline-offset: 2px;
             animation: none;
         }
         .cta--secondary:active {
@@ -295,11 +243,6 @@
             color: #003d99;
             box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2);
             text-shadow: none;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
-            50% { box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5); }
-            100% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
         }
         @keyframes pulse-secondary {
             0% { box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); }
@@ -442,7 +385,7 @@
         .animate {
             animation: fadeIn 0.6s ease-out forwards;
         }
-        .hall-of-fame h1.animate, .fame-member h2.animate, .fame-cta h2.animate {
+        .hall-of-fame h1.animate, .coming-soon p.animate, .fame-cta h2.animate {
             animation: slideIn 0.5s ease-out forwards;
         }
         .main-nav.active li {
@@ -462,7 +405,7 @@
 
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            .animate, .main-nav.active li, .hall-of-fame h1.animate, .fame-member h2.animate, .fame-cta h2.animate, .fame-member, .fame-cta, .cta, .cta--secondary, .footer-column a, .social-links a, .legal-links a {
+            .animate, .main-nav.active li, .hall-of-fame h1.animate, .coming-soon p.animate, .fame-cta h2.animate, .coming-soon, .fame-cta, .cta--secondary, .footer-column a, .social-links a, .legal-links a {
                 animation: none;
                 transition: none;
                 transform: none;
@@ -523,20 +466,11 @@
             .hall-of-fame h1 {
                 font-size: 2rem;
             }
-            .hall-of-fame p {
-                font-size: 1rem;
+            .coming-soon {
+                padding: 1.5rem;
             }
-            .fame-member h2 {
-                font-size: 1.4rem;
-            }
-            .fame-member .role {
-                font-size: 0.9rem;
-            }
-            .fame-member p {
-                font-size: 0.9rem;
-            }
-            .fame-member {
-                padding: 1rem;
+            .coming-soon p {
+                font-size: 1.2rem;
             }
             .fame-cta {
                 padding: 1.5rem;
@@ -547,7 +481,7 @@
             .fame-cta p {
                 font-size: 1rem;
             }
-            .cta, .cta--secondary {
+            .cta--secondary {
                 padding: 0.9rem 2rem;
                 font-size: 1rem;
             }
@@ -624,32 +558,12 @@
     <!-- Hall of Fame Section -->
     <section class="hall-of-fame">
         <h1>Hall of Fame</h1>
-        <p>We proudly recognize the exceptional contributors who have advanced the <strong>Mrwain Organization</strong>’s mission to build innovative <a href="dapps.html">DApps</a> for the <a href="https://minepi.com" target="_blank">Pi Network</a>. Join our <a href="community.html">community</a> to make your mark!</p>
-
-        <div class="fame-members">
-            <article class="fame-member">
-                <h2>Jane Doe</h2>
-                <div class="role">Lead Developer</div>
-                <p>Jane spearheaded the development of our flagship Pi Network DApp, contributing over 500 hours of coding and mentoring new developers. View her work on <a href="https://github.com/mrwain" target="_blank">GitHub</a>.</p>
-                <a href="member1.html" class="cta">Learn More</a>
-            </article>
-            <article class="fame-member">
-                <h2>John Smith</h2>
-                <div class="role">Community Leader</div>
-                <p>John grew our <a href="community.html">community</a> by hosting 10+ global meetups and moderating our <a href="https://discord.gg/mrwain" target="_blank">Discord</a>, fostering inclusivity.</p>
-                <a href="member2.html" class="cta">Learn More</a>
-            </article>
-            <article class="fame-member">
-                <h2>Alex Lee</h2>
-                <div class="role">Bug Bounty Champion</div>
-                <p>Alex identified critical bugs in our DApps through our <a href="bug-bounty.html">bug bounty program</a>, enhancing security for all Pi Network users.</p>
-                <a href="member3.html" class="cta">Learn More</a>
-            </article>
+        <div class="coming-soon">
+            <p>Our Hall of Fame is coming soon! Stay tuned as we recognize our top contributors and community champions.</p>
         </div>
-
         <div class="fame-cta">
-            <h2>Be Part of Our Legacy</h2>
-            <p>Contribute to our <a href="dapps.html">DApps</a>, join our <a href="community.html">community</a>, or share your ideas via <a href="contact.html">contact</a>. Your efforts could earn a spot in our Hall of Fame!</p>
+            <h2>Stay Connected</h2>
+            <p>Join our <a href="community.html">community</a> or follow us on social platforms to get the latest updates on our <a href="dapps.html">DApps</a> and the upcoming Hall of Fame.</p>
             <div class="contact-links">
                 <a href="https://discord.gg/mrwain" target="_blank" class="cta cta--secondary">Join on Discord</a>
                 <a href="https://x.com/mrwain" target="_blank" class="cta cta--secondary">Follow on X</a>
@@ -782,7 +696,7 @@
         });
 
         // Scroll-Triggered Animations
-        const sections = document.querySelectorAll('section, .fame-member, .fame-cta');
+        const sections = document.querySelectorAll('section, .coming-soon, .fame-cta');
         const observerOptions = {
             root: null,
             rootMargin: '0px',
