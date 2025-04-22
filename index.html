@@ -28,10 +28,11 @@
         header {
             background-color: #fff;
             border-bottom: 1px solid #e6e8eb;
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .nav-container {
             max-width: 1280px;
@@ -41,10 +42,89 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #0052cc;
+            text-align: center;
+            flex: 1;
         }
+        .profile-icon {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .profile-icon svg {
+            fill: #1f2a44;
+            transition: transform 0.2s ease;
+        }
+        .profile-icon:hover svg, .profile-icon:focus svg {
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .hamburger .hamburger-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        .hamburger .hamburger-icon span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #1f2a44;
+            position: absolute;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger .hamburger-icon span:nth-child(1) {
+            top: 6px;
+        }
+        .hamburger .hamburger-icon span:nth-child(2) {
+            top: 11px;
+        }
+        .hamburger .hamburger-icon span:nth-child(3) {
+            top: 16px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        .main-nav {
+            transition: left 0.3s ease-in-out;
+        }
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        .backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Navigation Styles */
         nav ul {
             list-style: none;
             display: flex;
@@ -66,49 +146,6 @@
             font-weight: 700;
         }
 
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-        .hamburger svg {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .hamburger .hamburger-icon.active {
-            transform: rotate(45deg);
-            opacity: 0;
-        }
-        .hamburger .close-icon {
-            display: none;
-        }
-        .hamburger .close-icon.active {
-            display: block;
-            transform: rotate(0deg);
-        }
-        .main-nav {
-            transition: right 0.3s ease-in-out;
-        }
-        .backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 999;
-        }
-        .backdrop.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(180deg, #fff 0%, #e6f0fa 100%);
@@ -120,6 +157,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .hero p {
             font-size: 1.2rem;
@@ -176,6 +214,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .vision p {
             font-size: 1.1rem;
@@ -200,6 +239,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .mission p {
             font-size: 1.1rem;
@@ -224,6 +264,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .donation p {
             font-size: 1.1rem;
@@ -266,6 +307,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .fame-grid {
             display: grid;
@@ -278,7 +320,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transición: transform 0.3s ease, box-shadow 0.3s ease;
             will-change: transform;
         }
         .fame-card:hover, .fame-card:active {
@@ -318,6 +360,7 @@
             font-weight: 600;
             margin-bottom: 3rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .feature-grid {
             display: grid;
@@ -376,6 +419,7 @@
             font-weight: 600;
             margin-bottom: 3rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .dapp-grid {
             display: grid;
@@ -435,6 +479,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .ledger-table {
             width: 100%;
@@ -480,6 +525,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .timeline {
             display: flex;
@@ -514,6 +560,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .announcements p {
             font-size: 1.1rem;
@@ -552,6 +599,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .about-foundation p {
             font-size: 1.1rem;
@@ -577,6 +625,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .bounty-grid {
             display: grid;
@@ -611,6 +660,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .community-grid {
             display: grid;
@@ -642,6 +692,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .metrics-grid {
             display: grid;
@@ -673,6 +724,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .badges {
             display: flex;
@@ -710,6 +762,7 @@
             font-weight: 600;
             margin-bottom: 3rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .testimonial-grid {
             display: grid;
@@ -741,6 +794,7 @@
             font-weight: 600;
             margin-bottom: 2rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .faq-item {
             background: #fff;
@@ -771,6 +825,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .impact p {
             font-size: 1.1rem;
@@ -795,6 +850,7 @@
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            transition: transform 0.5s ease;
         }
         .cta-banner p {
             font-size: 1.1rem;
@@ -822,11 +878,11 @@
             transform: scale(0.95);
         }
 
-        /* Footer (Stellar-Inspired) */
+        /* Footer */
         footer {
             background: #000;
             color: #fff;
-            padding: 4rem 2rem;
+            padding: 2rem 1.5rem;
         }
         .footer-content {
             max-width: 1280px;
@@ -835,18 +891,18 @@
         .footer-columns {
             display: flex;
             justify-content: space-between;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .footer-column {
             flex: 1;
-            min-width: 180px;
+            min-width: 160px;
         }
         .footer-column h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
             color: #fff;
         }
@@ -856,9 +912,11 @@
         .footer-column a {
             color: #e6e8eb;
             text-decoration: none;
-            font-size: 0.9rem;
-            line-height: 2;
+            font-size: 0.85rem;
+            line-height: 1.8;
             transition: color 0.3s ease, transform 0.2s ease;
+            display: block;
+            padding: 0.25rem 0;
         }
         .footer-column a:hover, .footer-column a:focus, .footer-column a:active {
             color: #fff;
@@ -879,12 +937,13 @@
             gap: 1rem;
         }
         .social-links span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #e6e8eb;
         }
         .social-links a {
             color: #e6e8eb;
             transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
         }
         .social-links a:hover, .social-links a:focus, .social-links a:active {
             color: #fff;
@@ -898,8 +957,9 @@
         .legal-links a {
             color: #e6e8eb;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
         }
         .legal-links a:hover, .legal-links a:focus, .legal-links a:active {
             color: #fff;
@@ -911,7 +971,7 @@
             gap: 1rem;
         }
         .copyright-lang span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #e6e8eb;
         }
         .language-selector {
@@ -920,7 +980,7 @@
             gap: 0.5rem;
         }
         .lang-icon {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .language-selector select {
             background: #333;
@@ -928,7 +988,7 @@
             border: none;
             border-radius: 4px;
             padding: 0.25rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: background 0.3s ease;
         }
@@ -942,12 +1002,19 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
         @keyframes staggerIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate {
             animation: fadeIn 0.6s ease-out forwards;
+        }
+        .hero h1.animate, .vision h2.animate, .mission h2.animate, .donation h2.animate, .hall-of-fame h2.animate, .features h2.animate, .dapps h2.animate, .ledger h2.animate, .future-plans h2.animate, .announcements h2.animate, .about-foundation h2.animate, .bounties h2.animate, .community h2.animate, .metrics h2.animate, .trust-badges h3.animate, .testimonials h2.animate, .faq h2.animate, .impact h2.animate, .cta-banner h2.animate {
+            animation: slideIn 0.5s ease-out forwards;
         }
         .main-nav.active li {
             animation: staggerIn 0.3s ease-out forwards;
@@ -966,15 +1033,64 @@
 
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            .animate, .main-nav.active li, .cta, .feature-card, .dapp-card, .reward-card, .fame-card, .bounty-card, .announcement-card, .timeline-item, .badge, .testimonial-card, .faq-item, .footer-column a, .social-links a, .legal-links a {
+            .animate, .main-nav.active li, .cta, .feature-card, .dapp-card, .reward-card, .fame-card, .bounty-card, .announcement-card, .timeline-item, .badge, .testimonial-card, .faq-item, .footer-column a, .social-links a, .legal-links a, .hero h1.animate, .vision h2.animate, .mission h2.animate, .donation h2.animate, .hall-of-fame h2.animate, .features h2.animate, .dapps h2.animate, .ledger h2.animate, .future-plans h2.animate, .announcements h2.animate, .about-foundation h2.animate, .bounties h2.animate, .community h2.animate, .metrics h2.animate, .trust-badges h3.animate, .testimonials h2.animate, .faq h2.animate, .impact h2.animate, .cta-banner h2.animate {
                 animation: none;
                 transition: none;
                 transform: none;
             }
         }
 
-        /* Responsive Design with Enhanced Mobile Menu */
+        /* Responsive Design */
         @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            .profile-icon {
+                display: block;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 280px;
+                height: 100%;
+                background: #fff;
+                z-index: 1000;
+                padding: 4rem 1.5rem;
+                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-nav.active {
+                left: 0;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            nav a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+                border-radius: 4px;
+                transition: background 0.3s ease, color 0.3s ease;
+            }
+            nav a:hover, nav a:focus, nav a:active {
+                background: #e6f0fa;
+                color: #0052cc;
+            }
             .hero h1 {
                 font-size: 2rem;
             }
@@ -983,6 +1099,12 @@
             }
             .cta-buttons {
                 flex-direction: column;
+            }
+            .vision h2, .mission h2, .donation h2, .hall-of-fame h2, .features h2, .dapps h2, .ledger h2, .future-plans h2, .announcements h2, .about-foundation h2, .bounties h2, .community h2, .metrics h2, .testimonials h2, .faq h2, .impact h2, .cta-banner h2 {
+                font-size: 1.8rem;
+            }
+            .trust-badges h3 {
+                font-size: 1.6rem;
             }
             .feature-card, .dapp-card, .testimonial-card, .community-card, .reward-card, .fame-card, .bounty-card, .announcement-card {
                 padding: 1.5rem;
@@ -997,48 +1119,16 @@
             .timeline {
                 gap: 1rem;
             }
-            /* Mobile Menu Styles */
-            .hamburger {
-                display: block;
-            }
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100%;
-                background: #fff;
-                z-index: 1000;
-                padding: 5rem 2rem;
-                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
-            }
-            .main-nav.active {
-                right: 0;
-            }
-            nav ul {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: center;
-            }
-            nav a {
-                font-size: 1.3rem;
-                padding: 0.75rem;
-                display: block;
-                width: 100%;
-                text-align: center;
-            }
-            /* Footer Responsive */
             .footer-columns {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             .footer-column {
                 min-width: 100%;
             }
             .footer-bottom {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 gap: 1rem;
             }
             .social-links, .legal-links, .copyright-lang {
@@ -1048,6 +1138,7 @@
             }
             .legal-links {
                 justify-content: center;
+                gap: 0.5rem;
             }
             .copyright-lang {
                 flex-direction: column;
@@ -1063,16 +1154,17 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo">Mrwain Organization</div>
             <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-                <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="logo">Mrwain Organization</div>
+            <button class="profile-icon" aria-label="User profile">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
             </button>
             <nav aria-label="Main navigation" class="main-nav">
@@ -1488,7 +1580,7 @@
         <button onclick="window.location.href='join.html'">Join Now</button>
     </section>
 
-    <!-- Footer (Stellar-Inspired) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-columns">
@@ -1582,7 +1674,6 @@
         const backdrop = document.querySelector('.backdrop');
         const body = document.body;
         const hamburgerIcon = document.querySelector('.hamburger-icon');
-        const closeIcon = document.querySelector('.close-icon');
 
         hamburger.addEventListener('click', () => {
             nav.classList.toggle('active');
@@ -1591,7 +1682,6 @@
             const isExpanded = nav.classList.contains('active');
             hamburger.setAttribute('aria-expanded', isExpanded);
             hamburgerIcon.classList.toggle('active', isExpanded);
-            closeIcon.classList.toggle('active', isExpanded);
         });
 
         // Close menu on link click or backdrop click
@@ -1602,7 +1692,6 @@
                 body.classList.remove('no-scroll');
                 hamburger.setAttribute('aria-expanded', 'false');
                 hamburgerIcon.classList.remove('active');
-                closeIcon.classList.remove('active');
             });
         });
 
@@ -1612,7 +1701,6 @@
             body.classList.remove('no-scroll');
             hamburger.setAttribute('aria-expanded', 'false');
             hamburgerIcon.classList.remove('active');
-            closeIcon.classList.remove('active');
         });
 
         // Scroll-Triggered Animations
