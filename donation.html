@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donations - Mrwain Organization</title>
     <meta name="description" content="Support the Mrwain Organization’s mission to build DApps for the Pi Network through donations via PayPal, Pi, or cryptocurrencies.">
+    <meta property="og:title" content="Donations - Mrwain Organization">
+    <meta property="og:description" content="Support our mission to build DApps for the Pi Network with donations via PayPal, Pi, or cryptocurrencies.">
+    <meta property="og:image" content="https://mrwain.org/images/og-image.jpg">
+    <meta property="og:url" content="https://mrwain.org/donation.html">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -239,7 +243,7 @@
             animation: pulse 2s infinite ease-in-out;
             transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, text-shadow 0.2s ease, box-shadow 0.3s ease;
             touch-action: manipulation;
-            will-change: transform, color, text-shadow, box-shadow;
+            will-change: transform, box-shadow;
             display: inline-block;
             text-decoration: none;
         }
@@ -278,7 +282,7 @@
             animation: pulse-secondary 2s infinite ease-in-out;
             transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             touch-action: manipulation;
-            will-change: transform, color, box-shadow;
+            will-change: transform, box-shadow;
             display: inline-block;
             text-decoration: none;
             margin: 0.5rem 0;
@@ -300,7 +304,7 @@
         }
         @keyframes pulse {
             0% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
-            50% { box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5); }
+            50% { box-shadow: 0 6px 16px rgba(0, 82, 204, 0.4); }
             100% { box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3); }
         }
         @keyframes pulse-secondary {
@@ -640,7 +644,7 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
                 <div class="hamburger-icon">
                     <span></span>
                     <span></span>
@@ -653,7 +657,7 @@
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
             </button>
-            <nav aria-label="Main navigation" class="main-nav">
+            <nav aria-label="Main navigation" class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="vision.html">Vision</a></li>
@@ -676,7 +680,7 @@
         <h1>Support Our Mission</h1>
         <p>Your donation helps us develop new <a href="dapps.html">DApps</a>, enhance <a href="ledger.html">transparency</a>, and grow the <a href="https://minepi.com" target="_blank">Pi ecosystem</a>. Choose your preferred method below.</p>
         <div class="donation-options">
-            <!-- PayPal Donation (Dynamic Button Based on Amount) -->
+            <!-- PayPal Donation -->
             <div class="donation-card">
                 <h2>Donate with PayPal</h2>
                 <p>Support us using PayPal in your preferred currency.</p>
@@ -700,34 +704,38 @@
                         <option value="AUD">AUD</option>
                     </select>
                     <div id="paypalButtonContainer">
-                        <input type="image" name="submit" id="paypalButton" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
+                        <input type="image" name="submit" id="paypalButton" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal" aria-label="Submit PayPal donation" loading="lazy">
                         <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
                     </div>
                 </form>
             </div>
 
-            <!-- Pi Donation (Direct to Pi Browser Wallet) -->
+            <!-- Pi Donation -->
             <div class="donation-card">
                 <h2>Donate with Pi</h2>
                 <p>Send Pi directly to our wallet via the Pi Browser.</p>
-                <p class="wallet-address">mrwain_pi_donation</p>
-                <button class="copy-btn cta--secondary" onclick="copyToClipboard('mrwain_pi_donation')">Copy Address</button>
+                <p class="wallet-address">GDSXE723WPHZ5RGIJCSYXTPKSOIGPTSXE4RF5U3JTNGTCHXON7ZVD4LJ</p>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('GDSXE723WPHZ5RGIJCSYXTPKSOIGPTSXE4RF5U3JTNGTCHXON7ZVD4LJ', 'PI')" aria-label="Copy Pi wallet address">Copy Address</button>
                 <button class="donate-btn cta" onclick="openPiWallet()">Donate via Pi Browser</button>
             </div>
 
             <!-- Other Cryptocurrencies -->
+            <!-- IMPORTANT: All crypto addresses below are placeholders for demo purposes. Replace with verified addresses before deployment. -->
             <div class="donation-card">
                 <h2>Donate with Crypto</h2>
-                <p>Support us with other cryptocurrencies like BTC, ETH, or USDT.</p>
-                <label>BTC Address:</label>
-                <p class="wallet-address">bc1qmrwaindonation...</p>
-                <button class="copy-btn cta--secondary" onclick="copyToClipboard('bc1qmrwaindonation...')">Copy Address</button>
-                <label>ETH/USDT Address:</label>
-                <p class="wallet-address">0xmrwaindonation...</p>
-                <button class="copy-btn cta--secondary" onclick="copyToClipboard('0xmrwaindonation...')">Copy Address</button>
-                <a href="mailto:donations@mrwain.org" class="donate-btn cta">Contact for Details</a>
+                <p>Support us with cryptocurrencies like BTC, ETH, or USDT. (Note: All addresses are placeholders for demo purposes and must be replaced with verified addresses before going live.)</p>
+                <label>BTC Address (SegWit):</label>
+                <p class="wallet-address">bc1qmrwaindonationexample1234567890abcdef</p>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('bc1qmrwaindonationexample1234567890abcdef', 'BTC')" aria-label="Copy BTC wallet address">Copy Address</button>
+                <label>ETH Address:</label>
+                <p class="wallet-address">0xfc584e884a0295276df7d590478759d38036465f</p>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('0xfc584e884a0295276df7d590478759d38036465f', 'ETH')" aria-label="Copy ETH wallet address">Copy Address</button>
+                <label>USDT Address (ERC-20):</label>
+                <p class="wallet-address">0xfc584e884a0295276df7d590478759d38036465f</p>
+                <button class="copy-btn cta--secondary" onclick="copyToClipboard('0xfc584e884a0295276df7d590478759d38036465f', 'USDT')" aria-label="Copy USDT wallet address">Copy Address</button>
             </div>
         </div>
+        <a href="mailto:donations@mrwain.org" class="donate-btn cta">Contact for Details</a>
     </section>
 
     <!-- Confirmation Message -->
@@ -887,18 +895,33 @@
             if (amount === '') {
                 paypalButtonContainer.innerHTML = `
                     <input type="text" name="amount" placeholder="Enter custom amount" style="width: 100%; padding: 0.75rem; border: 1px solid #e6e8eb; border-radius: 8px; margin-bottom: 1rem;">
-                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
+                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal" aria-label="Submit PayPal donation" loading="lazy">
                     <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
                 `;
             } else {
                 paypalButtonContainer.innerHTML = `
-                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
+                    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal" aria-label="Submit PayPal donation" loading="lazy">
                     <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
                 `;
             }
         }
 
-        function copyToClipboard(text) {
+        function isValidCryptoAddress(address, type) {
+            if (type === 'BTC') {
+                return /^(bc1|[13])[a-zA-Z0-9]{25,42}$/.test(address); // Extended length for SegWit
+            } else if (type === 'ETH' || type === 'USDT') {
+                return /^0x[a-fA-F0-9]{40}$/.test(address);
+            } else if (type === 'PI') {
+                return /^[A-Za-z0-9]{56}$/.test(address);
+            }
+            return false;
+        }
+
+        function copyToClipboard(text, type) {
+            if (!isValidCryptoAddress(text, type)) {
+                alert('Invalid wallet address. Please contact support at donations@mrwain.org.');
+                return;
+            }
             navigator.clipboard.writeText(text).then(() => {
                 const overlay = document.getElementById('overlay');
                 const confirmationMessage = document.getElementById('confirmationMessage');
@@ -910,14 +933,34 @@
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
+                alert('Failed to copy address. Please try again.');
             });
         }
 
         function openPiWallet() {
-            const walletAddress = 'mrwain_pi_donation';
+            const walletAddress = 'GDSXE723WPHZ5RGIJCSYXTPKSOIGPTSXE4RF5U3JTNGTCHXON7ZVD4LJ';
             const piWalletUrl = `pi://wallet?address=${encodeURIComponent(walletAddress)}`;
-            window.location.href = piWalletUrl;
+            try {
+                window.location.href = piWalletUrl;
+            } catch (e) {
+                alert(`Please open the Pi Browser and send Pi to: ${walletAddress}`);
+            }
         }
+
+        // PayPal Form Validation
+        document.getElementById('paypalForm').addEventListener('submit', (e) => {
+            const amountInput = document.querySelector('#paypalForm input[name="amount"]');
+            if (amountInput && amountInput.value && (isNaN(amountInput.value) || amountInput.value <= 0)) {
+                e.preventDefault();
+                alert('Please enter a valid donation amount.');
+            }
+        });
+
+        // Language Selector Placeholder
+        document.querySelector('.language-selector select').addEventListener('change', (e) => {
+            const lang = e.target.value;
+            alert(`Language changed to ${lang}. (Full implementation pending)`);
+        });
     </script>
 </body>
 </html>
