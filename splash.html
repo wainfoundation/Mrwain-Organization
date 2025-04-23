@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mrwain Organization - Loading</title>
+    <meta name="description" content="Welcome to the Mrwain Organization, building decentralized applications on the Pi Network.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #fff 0%, #e6f0fa 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #1f2a44;
+        }
+
+        /* Splash Container */
+        .splash-container {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .splash-logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0052cc;
+            margin-bottom: 2rem;
+            transition: transform 0.5s ease;
+        }
+        .splash-logo.animate {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #0052cc;
+            border-radius: 50%;
+            animation: bounce 0.6s ease-in-out infinite alternate;
+        }
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Loading Text */
+        .loading-text {
+            font-size: 1.2rem;
+            color: #4b5e7a;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Fade Out for Redirect */
+        .splash-container.fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .splash-container, .splash-logo.animate, .loading-text, .dot {
+                animation: none;
+                transition: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .splash-logo {
+                font-size: 2rem;
+            }
+            .loading-text {
+                font-size: 1rem;
+            }
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Container -->
+    <div class="splash-container">
+        <h1 class="splash-logo animate">Mrwain Organization</h1>
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <p class="loading-text">Building the Future on Pi Network...</p>
+    </div>
+
+    <!-- JavaScript for Redirect and Fade-Out -->
+    <script>
+        // Redirect to index.html after 3 seconds with fade-out effect
+        window.onload = () => {
+            setTimeout(() => {
+                const splash = document.querySelector('.splash-container');
+                splash.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500); // Wait for fade-out animation to complete
+            }, 3000); // 3-second delay before redirect
+        };
+    </script>
+</body>
+</html>
