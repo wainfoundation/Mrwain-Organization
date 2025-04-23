@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mrwain Organization - Announcements</title>
+    <meta name="description" content="Stay updated with the latest announcements from the Mrwain Organization, including new DApp launches, community events, and Pi ecosystem updates.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2a44;
+            background-color: #f7f9fc;
+            scroll-behavior: smooth;
+        }
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #e6e8eb;
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0052cc;
+            text-align: center;
+            flex: 1;
+        }
+        .profile-icon {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .profile-icon svg {
+            fill: #1f2a44;
+            transition: transform 0.2s ease;
+        }
+        .profile-icon:hover svg, .profile-icon:focus svg {
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .hamburger .hamburger-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        .hamburger .hamburger-icon span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #1f2a44;
+            position: absolute;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger .hamburger-icon span:nth-child(1) {
+            top: 6px;
+        }
+        .hamburger .hamburger-icon span:nth-child(2) {
+            top: 11px;
+        }
+        .hamburger .hamburger-icon span:nth-child(3) {
+            top: 16px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        .main-nav {
+            transition: left 0.3s ease-in-out;
+        }
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        .backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Navigation Styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            color: #1f2a44;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            touch-action: manipulation;
+        }
+        nav a:hover, nav a:focus, nav a:active {
+            color: #0052cc;
+        }
+        nav a[aria-current="page"] {
+            color: #0052cc;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #fff 0%, #e6f0fa 100%);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #4b5e7a;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .cta {
+            background: #0052cc;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            touch-action: manipulation;
+            will-change: transform;
+        }
+        .cta.secondary {
+            background: transparent;
+            border: 2px solid #0052cc;
+            color: #0052cc;
+        }
+        .cta:hover, .cta:focus {
+            background: #003d99;
+            transform: scale(1.05);
+        }
+        .cta.secondary:hover, .cta.secondary:focus {
+            background: #e6f0fa;
+            transform: scale(1.05);
+        }
+        .cta:active {
+            transform: scale(0.95);
+        }
+
+        /* Announcements Section */
+        .announcements {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+        .announcements h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+        .announcement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .announcement-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .announcement-card:hover, .announcement-card:active {
+            transform: translateY(-5px);
+        }
+        .announcement-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
+        }
+        .announcement-card .date {
+            font-size: 0.9rem;
+            color: #4b5e7a;
+            margin-bottom: 1rem;
+        }
+        .announcement-card p {
+            font-size: 1rem;
+            color: #4b5e7a;
+            margin-bottom: 1rem;
+        }
+        .announcement-card a {
+            color: #0052cc;
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .announcement-card a:hover, .announcement-card a:focus {
+            color: #003d99;
+        }
+
+        /* Subscription Section */
+        .subscription {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .subscription h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .subscription p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #4b5e7a;
+            margin-bottom: 2rem;
+        }
+        .subscription form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .subscription input[type="email"] {
+            padding: 1rem;
+            border: 1px solid #e6e8eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            transition: border-color 0.3s ease;
+        }
+        .subscription input[type="email"]:focus {
+            border-color: #0052cc;
+            outline: none;
+        }
+        .subscription button {
+            background: #0052cc;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            will-change: transform;
+        }
+        .subscription button:hover, .subscription button:focus {
+            background: #003d99;
+            transform: scale(1.05);
+        }
+        .subscription button:active {
+            transform: scale(0.95);
+        }
+
+        /* CTA Banner Section */
+        .cta-banner {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            background: #0052cc;
+            border-radius: 12px;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+        }
+        .cta-banner h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-banner button {
+            background: #fff;
+            color: #0052cc;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            will-change: transform;
+        }
+        .cta-banner button:hover, .cta-banner button:focus {
+            background: #e6e8eb;
+            transform: scale(1.05);
+        }
+        .cta-banner button:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 2rem 1.5rem;
+        }
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .footer-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 160px;
+        }
+        .footer-column h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column a {
+            color: #e6e8eb;
+            text-decoration: none;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: block;
+            padding: 0.25rem 0;
+        }
+        .footer-column a:hover, .footer-column a:focus, .footer-column a:active {
+            color: #fff;
+            transform: translateX(5px);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .social-links span {
+            font-size: 0.85rem;
+            color: #e6e8eb;
+        }
+        .social-links a {
+            color: #e6e8eb;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
+        }
+        .social-links a:hover, .social-links a:focus, .social-links a:active {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        .legal-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .legal-links a {
+            color: #e6e8eb;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
+        }
+        .legal-links a:hover, .legal-links a:focus, .legal-links a:active {
+            color: #fff;
+            transform: translateX(5px);
+        }
+        .copyright-lang {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .copyright-lang span {
+            font-size: 0.8rem;
+            color: #e6e8eb;
+        }
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .lang-icon {
+            font-size: 0.85rem;
+        }
+        .language-selector select {
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .language-selector select:focus {
+            outline: none;
+            background: #444;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes staggerIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .hero h1.animate, .announcements h2.animate, .subscription h2.animate, .cta-banner h2.animate {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .main-nav.active li {
+            animation: staggerIn 0.3s ease-out forwards;
+        }
+        .main-nav.active li:nth-child(1) { animation-delay: 0.1s; }
+        .main-nav.active li:nth-child(2) { animation-delay: 0.15s; }
+        .main-nav.active li:nth-child(3) { animation-delay: 0.2s; }
+        .main-nav.active li:nth-child(4) { animation-delay: 0.25s; }
+        .main-nav.active li:nth-child(5) { animation-delay: 0.3s; }
+        .main-nav.active li:nth-child(6) { animation-delay: 0.35s; }
+        .main-nav.active li:nth-child(7) { animation-delay: 0.4s; }
+        .main-nav.active li:nth-child(8) { animation-delay: 0.45s; }
+        .main-nav.active li:nth-child(9) { animation-delay: 0.5s; }
+        .main-nav.active li:nth-child(10) { animation-delay: 0.55s; }
+        .main-nav.active li:nth-child(11) { animation-delay: 0.6s; }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate, .main-nav.active li, .cta, .announcement-card, .footer-column a, .social-links a, .legal-links a, .hero h1.animate, .announcements h2.animate, .subscription h2.animate, .cta-banner h2.animate {
+                animation: none;
+                transition: none;
+                transform: none;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            .profile-icon {
+                display: block;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 280px;
+                height: 100%;
+                background: #fff;
+                z-index: 1000;
+                padding: 4rem 1.5rem;
+                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-nav.active {
+                left: 0;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+                width: 100%;
+            }
+            nav a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+                border-radius: 4px;
+                transition: background 0.3s ease, color 0.3s ease;
+            }
+            nav a:hover, nav a:focus, nav a:active {
+                background: #e6f0fa;
+                color: #0052cc;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .announcements h2, .subscription h2, .cta-banner h2 {
+                font-size: 1.8rem;
+            }
+            .announcement-card {
+                padding: 1.5rem;
+            }
+            .subscription form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .subscription input[type="email"] {
+                max-width: 100%;
+            }
+            .footer-columns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .footer-column {
+                min-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .social-links, .legal-links, .copyright-lang {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .legal-links {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            .copyright-lang {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Backdrop for Mobile Menu -->
+    <div class="backdrop"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="logo">Mrwain Organization</div>
+            <button class="profile-icon" aria-label="User profile">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </button>
+            <nav aria-label="Main navigation" class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="dapps.html">DApps</a></li>
+                    <li><a href="ledger.html">Ledger</a></li>
+                    <li><a href="donation.html">Donations</a></li>
+                    <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                    <li><a href="future-plans.html">Future Plans</a></li>
+                    <li><a href="announcement.html" aria-current="page">Announcements</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="community.html">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="announcements-hero">
+        <h1>Latest Announcements</h1>
+        <p>Stay informed about the Mrwain Organization’s latest updates, including new DApp launches, community events, and advancements in the Pi ecosystem.</p>
+        <div class="cta-buttons">
+            <button class="cta" onclick="window.location.href='#subscription'">Subscribe for Updates</button>
+            <button class="cta secondary" onclick="window.location.href='community.html'">Join Our Community</button>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="announcements" id="announcements">
+        <h2>Recent Updates</h2>
+        <div class="announcement-list">
+            <div class="announcement-card">
+                <h3>Quantum Pay 2.0 Launch</h3>
+                <div class="date">April 10, 2025</div>
+                <p>We’re thrilled to announce the release of Quantum Pay 2.0, featuring enhanced cross-chain compatibility and a streamlined user interface. This update makes transactions faster and more secure for the Pi community.</p>
+                <a href="dapps.html#quantum-pay">Learn More About Quantum Pay</a>
+            </div>
+            <div class="announcement-card">
+                <h3>Global Pi Hackathon</h3>
+                <div class="date">March 15, 2025</div>
+                <p>Join our first-ever Global Pi Hackathon, where developers can build innovative DApps on the Pi Network. Prizes include Pi tokens and recognition in our Hall of Fame.</p>
+                <a href="bounties.html">Register for the Hackathon</a>
+            </div>
+            <div class="announcement-card">
+                <h3>New Transparency Metrics Released</h3>
+                <div class="date">February 20, 2025</div>
+                <p>We’ve updated our transparency metrics, showcasing over 50,000 community members and millions of Pi transactions facilitated. Explore our public ledger for full details.</p>
+                <a href="ledger.html">View Transparency Metrics</a>
+            </div>
+            <div class="announcement-card">
+                <h3>Partnership with Global NGOs</h3>
+                <div class="date">January 10, 2025</div>
+                <p>We’re excited to partner with leading NGOs to promote financial inclusion through the Pi ecosystem. Stay tuned for community events and donation drives.</p>
+                <a href="donation.html">Support Our Initiatives</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section class="subscription" id="subscription">
+        <h2>Subscribe for Updates</h2>
+        <p>Never miss an announcement! Sign up to receive the latest news about our DApps, events, and Pi ecosystem developments directly in your inbox.</p>
+        <form action="/subscribe" method="POST" id="subscription-form">
+            <input type="email" placeholder="Enter your email" aria-label="Email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="cta-banner">
+        <h2>Explore Our DApps</h2>
+        <p>Discover how our decentralized applications are transforming the Pi ecosystem. Check out Quantum Pay, Salenus, and more!</p>
+        <button onclick="window.location.href='dapps.html'">Discover DApps</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="about.html">Mrwain Foundation</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="future-plans.html">Roadmap</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>DApps and Transparency</h3>
+                    <ul>
+                        <li><a href="dapps.html">Our DApps</a></li>
+                        <li><a href="ledger.html">Ledger Transparency</a></li>
+                        <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                        <li><a href="donation.html">Donations</a></li>
+                        <li><a href="metrics.html">Transparency Metrics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Developers</h3>
+                    <ul>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="bounties.html">Developer Bounties</a></li>
+                        <li><a href="https://github.com/mrwain" target="_blank">GitHub</a></li>
+                        <li><a href="bug-bounty.html">Bug Bounty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="community.html">Join Our Community</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://discord.gg/mrwain" target="_blank">Discord</a></li>
+                        <li><a href="https://x.com/mrwain" target="_blank">X</a></li>
+                        <li><a href="https://linkedin.com/company/mrwain" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <span>Follow Us:</span>
+                    <a href="https://linkedin.com/company/mrwain" target="_blank" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#e6e8eb">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.028-3.06-1.866-3.06-1.868 0-2.154 1.459-2.154 2.966v5.698h-3v-11h2.879v1.498h.041c.401-.757 1.379-1.557 2.837-1.557 3.034 0 3.593 1.997 3.593 4.597v6.462z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/mrwain" target="_blank" aria-label="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#e6e8eb">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="audits.html">Audit Reports</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="copyright-lang">
+                    <span>© 2025 Mrwain Organization</span>
+                    <div class="language-selector">
+                        <span class="lang-icon">🌐</span>
+                        <select aria-label="Select language">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu, Animations, and Form Handling -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.main-nav');
+        const backdrop = document.querySelector('.backdrop');
+        const body = document.body;
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            backdrop.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+            const isExpanded = nav.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            hamburgerIcon.classList.toggle('active', isExpanded);
+        });
+
+        // Close menu on link click or backdrop click
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                backdrop.classList.remove('active');
+                body.classList.remove('no-scroll');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.classList.remove('active');
+            });
+        });
+
+        backdrop.addEventListener('click', () => {
+            nav.classList.remove('active');
+            backdrop.classList.remove('active');
+            body.classList.remove('no-scroll');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.classList.remove('active');
+        });
+
+        // Scroll-Triggered Animations
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Subscription Form Handling
+        const form = document.getElementById('subscription-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = form.querySelector('input[type="email"]');
+            const email = emailInput.value;
+
+            // Placeholder for form submission logic (e.g., send to server or third-party service)
+            if (email) {
+                alert('Thank you for subscribing! You will receive updates at ' + email);
+                form.reset();
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    </script>
+</body>
+</html>
