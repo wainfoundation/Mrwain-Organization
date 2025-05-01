@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mrwain Organization - Blockchain Networks</title>
-    <meta name="description" content="Discover the blockchain networks Mrwain Organization is building on, with all DApps in progress on Pi Network and plans for Stellar, Solana, and Ethereum.">
+    <meta name="description" content="Explore the blockchain networks powering Mrwain Organization’s DApps, with active development on Pi Network and future plans for Stellar, Solana, and Ethereum.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
@@ -259,6 +259,20 @@
             font-size: 1rem;
             color: #4b5e7a;
             margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .chain-status .badge {
+            background: #e6f0fa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #0052cc;
+            margin-left: 0.5rem;
+        }
+        .chain-description {
+            font-size: 1rem;
+            color: #4b5e7a;
+            margin-bottom: 1.5rem;
         }
         .chain-dapps {
             list-style: none;
@@ -286,6 +300,24 @@
         .chain-dapps p {
             font-size: 0.95rem;
             color: #4b5e7a;
+            margin-bottom: 0.5rem;
+        }
+        .chain-dapps .features {
+            list-style: disc;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+            color: #4b5e7a;
+            margin-bottom: 0.5rem;
+        }
+        .chain-dapps .doc-link {
+            color: #0052cc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        .chain-dapps .doc-link:hover, .chain-dapps .doc-link:focus {
+            text-decoration: underline;
+            transform: scale(1.05);
         }
         .toggle-dapps {
             background: none;
@@ -299,6 +331,44 @@
         .toggle-dapps:hover, .toggle-dapps:focus {
             text-decoration: underline;
             transform: scale(1.05);
+        }
+
+        /* FAQ Section */
+        .faq {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+        .faq h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .faq-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .faq-item:hover, .faq-item:active {
+            transform: translateY(-5px);
+        }
+        .faq-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            font-size: 1rem;
+            color: #4b5e7a;
         }
 
         /* Footer */
@@ -436,7 +506,7 @@
         .animate {
             animation: fadeIn 0.6s ease-out forwards;
         }
-        .hero h1.animate, .chains h2.animate {
+        .hero h1.animate, .chains h2.animate, .faq h2.animate {
             animation: slideIn 0.5s ease-out forwards;
         }
         .main-nav.active li {
@@ -457,7 +527,7 @@
 
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            .animate, .main-nav.active li, .cta, .chain-card, .chain-dapps li, .hero h1.animate, .chains h2.animate {
+            .animate, .main-nav.active li, .cta, .chain-card, .chain-dapps li, .faq-item, .hero h1.animate, .chains h2.animate, .faq h2.animate {
                 animation: none;
                 transition: none;
                 transform: none;
@@ -524,7 +594,7 @@
             .cta-buttons {
                 flex-direction: column;
             }
-            .chains h2 {
+            .chains h2, .faq h2 {
                 font-size: 1.8rem;
             }
             .chain-card {
@@ -537,6 +607,12 @@
                 width: 32px;
                 height: 32px;
                 font-size: 1rem;
+            }
+            .faq-item {
+                padding: 1rem;
+            }
+            .faq-item h3 {
+                font-size: 1.2rem;
             }
             .footer-columns {
                 flex-direction: column;
@@ -608,7 +684,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>Our Blockchain Networks</h1>
-        <p>Mrwain Organization is building innovative DApps on the Pi Network, with all projects in progress. We are also planning to expand to Stellar, Solana, and Ethereum soon.</p>
+        <p>Mrwain Organization is pioneering decentralized applications on the Pi Network, with all DApps actively in development. We are also planning expansions to Stellar, Solana, and Ethereum to enhance interoperability and scalability.</p>
         <div class="cta-buttons">
             <button class="cta" onclick="window.location.href='dapps.html'">Explore Our DApps</button>
             <button class="cta secondary" onclick="window.location.href='ledger.html'">View Ledger</button>
@@ -624,44 +700,101 @@
                     <div class="chain-logo">Pi</div>
                     <h3>Pi Network</h3>
                 </div>
-                <div class="chain-status">In Progress</div>
+                <div class="chain-status">In Progress<span class="badge">Active Development</span></div>
+                <div class="chain-description">
+                    The Pi Network is our primary blockchain, enabling mobile-first, inclusive access to decentralized applications. Its lightweight consensus mechanism supports millions of users, making it ideal for Mrwain’s mission of financial inclusion. All our DApps are currently in development on Pi, with transparent wallets and open-source code.
+                </div>
                 <button class="toggle-dapps" aria-expanded="false">Show DApps</button>
                 <ul class="chain-dapps">
                     <li>
-                        <h4>Quantum Pay (In Progress)</h4>
+                        <h4>Quantum Pay (Beta)</h4>
                         <p>A decentralized payment platform enabling fast, secure transactions using Pi across global merchants.</p>
+                        <ul class="features">
+                            <li>Instant cross-border payments with low fees</li>
+                            <li>Merchant integration APIs</li>
+                            <li>Secure custodial wallet</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/quantumpay-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>TruthWeb (In Progress)</h4>
+                        <h4>TruthWeb (Alpha)</h4>
                         <p>A blockchain-based social platform ensuring authentic, transparent content sharing within the Pi community.</p>
+                        <ul class="features">
+                            <li>Content verification via blockchain</li>
+                            <li>Decentralized moderation</li>
+                            <li>Pi-based tipping for creators</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/truthweb-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>Cloudy (In Progress)</h4>
+                        <h4>Cloudy (Alpha)</h4>
                         <p>Secure, scalable cloud storage powered by Pi, offering encrypted data hosting for users and DApps.</p>
+                        <ul class="features">
+                            <li>End-to-end encryption</li>
+                            <li>Pi-based storage subscriptions</li>
+                            <li>Decentralized file redundancy</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/cloudy-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>Droplink (In Progress)</h4>
+                        <h4>Droplink (Beta)</h4>
                         <p>A peer-to-peer file-sharing DApp leveraging Pi for fast, private, and decentralized transfers.</p>
+                        <ul class="features">
+                            <li>Encrypted file transfers</li>
+                            <li>Pi rewards for bandwidth sharing</li>
+                            <li>Cross-platform compatibility</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/droplink/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>TaskHub (In Progress)</h4>
+                        <h4>TaskHub (Alpha)</h4>
                         <p>A collaborative platform for managing tasks and projects, rewarding contributors with Pi tokens.</p>
+                        <ul class="features">
+                            <li>Smart contract-based task assignments</li>
+                            <li>Pi micropayments for completed tasks</li>
+                            <li>Team collaboration tools</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/taskhub-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>Salenus (In Progress)</h4>
-                        <p>A decentralized Web3 social network built on the Pi Network, empowering users to connect, share, and build communities.</p>
+                        <h4>Salenus (Beta)</h4>
+                        <p>A decentralized Web3 social network built on the Pi Network, empowering users to connect and build communities.</p>
+                        <ul class="features">
+                            <li>User-owned data with blockchain storage</li>
+                            <li>Pi-based community rewards</li>
+                            <li>Customizable user profiles</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/salenus-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>Trend Forge Update (In Progress)</h4>
+                        <h4>Trend Forge Update (Alpha)</h4>
                         <p>A decentralized news aggregator delivering verified updates on Pi ecosystem developments.</p>
+                        <ul class="features">
+                            <li>Blockchain-verified news sources</li>
+                            <li>Pi rewards for curators</li>
+                            <li>Real-time update feeds</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/trend-forge-update-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>SmartSolve (In Progress)</h4>
+                        <h4>SmartSolve (Alpha)</h4>
                         <p>A decentralized platform utilizing AI to provide smart, real-time solutions for everyday challenges using Pi.</p>
+                        <ul class="features">
+                            <li>AI-driven problem-solving tools</li>
+                            <li>Pi-based premium features</li>
+                            <li>Community-driven knowledge base</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/smartsolve-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                     <li>
-                        <h4>SundaySoul (In Progress)</h4>
+                        <h4>SundaySoul (Alpha)</h4>
                         <p>A decentralized wellness platform for mindful meditation and mental health practices, powered by Pi.</p>
+                        <ul class="features">
+                            <li>Guided meditation sessions</li>
+                            <li>Pi rewards for wellness milestones</li>
+                            <li>Community support groups</li>
+                        </ul>
+                        <a href="https://truthwebdocs.gitbook.io/sundaysoul-docs/" class="doc-link" target="_blank">View Documentation</a>
                     </li>
                 </ul>
             </div>
@@ -670,10 +803,18 @@
                     <div class="chain-logo">XLM</div>
                     <h3>Stellar</h3>
                 </div>
-                <div class="chain-status">Planning - Coming Soon</div>
+                <div class="chain-status">Planning - Coming Soon<span class="badge">Q4 2025</span></div>
+                <div class="chain-description">
+                    Stellar’s fast, low-cost transactions make it ideal for cross-border payments and asset tokenization. We plan to integrate Stellar for DApps focused on remittances and tokenized assets, enhancing interoperability with Pi Network. Planned DApps include a remittance platform and a tokenized rewards system.
+                </div>
                 <ul class="chain-dapps">
                     <li>
-                        <p>No DApps currently in development. Stay tuned for future announcements.</p>
+                        <p>No DApps currently in development. Planned integrations include:</p>
+                        <ul class="features">
+                            <li>Pi-to-Stellar bridge for seamless asset transfers</li>
+                            <li>Decentralized remittance DApp for global payments</li>
+                            <li>Tokenized loyalty rewards for Pi users</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -682,10 +823,18 @@
                     <div class="chain-logo">SOL</div>
                     <h3>Solana</h3>
                 </div>
-                <div class="chain-status">Planning - Coming Soon</div>
+                <div class="chain-status">Planning - Coming Soon<span class="badge">Q1 2026</span></div>
+                <div class="chain-description">
+                    Solana’s high-throughput blockchain supports complex DApps with minimal fees. We aim to deploy DeFi and NFT DApps on Solana, leveraging its scalability for gaming and marketplace integrations. Planned DApps include a DeFi yield farming platform and an NFT marketplace for Pi creators.
+                </div>
                 <ul class="chain-dapps">
                     <li>
-                        <p>No DApps currently in development. Stay tuned for future announcements.</p>
+                        <p>No DApps currently in development. Planned integrations include:</p>
+                        <ul class="features">
+                            <li>DeFi platform for Pi-based yield farming</li>
+                            <li>NFT marketplace for digital art and collectibles</li>
+                            <li>Cross-chain Pi-Solana wallet integration</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -694,13 +843,46 @@
                     <div class="chain-logo">ETH</div>
                     <h3>Ethereum</h3>
                 </div>
-                <div class="chain-status">Planning - Coming Soon</div>
+                <div class="chain-status">Planning - Coming Soon<span class="badge">Q2 2026</span></div>
+                <div class="chain-description">
+                    Ethereum’s robust smart contract ecosystem is perfect for advanced DeFi and governance DApps. We plan to build governance protocols and DeFi solutions on Ethereum, enabling Pi users to participate in decentralized finance. Planned DApps include a governance voting platform and a lending protocol.
+                </div>
                 <ul class="chain-dapps">
                     <li>
-                        <p>No DApps currently in development. Stay tuned for future announcements.</p>
+                        <p>No DApps currently in development. Planned integrations include:</p>
+                        <ul class="features">
+                            <li>Decentralized governance DApp for community voting</li>
+                            <li>Pi-based lending and borrowing platform</li>
+                            <li>Ethereum-Pi cross-chain bridge</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>Why is Mrwain focusing on Pi Network?</h3>
+            <p>Pi Network’s mobile-first approach aligns with our mission of financial inclusion, enabling millions of users to access DApps with minimal barriers. Its lightweight consensus and transparent blockchain make it ideal for our current suite of DApps.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What are the benefits of expanding to Stellar, Solana, and Ethereum?</h3>
+            <p>These blockchains offer unique advantages: Stellar for low-cost remittances, Solana for high-throughput DeFi and NFTs, and Ethereum for robust smart contracts. Expanding to these chains will enhance interoperability and bring new use cases to Pi users.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How can I track the development progress of DApps?</h3>
+            <p>All DApp development is documented on our GitHub and GitBook pages. You can also view wallet transactions on the Pi Block Explorer and stay updated via our Announcements page.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Will Pi Network DApps be compatible with other blockchains?</h3>
+            <p>Yes, we are planning cross-chain bridges to integrate Pi Network DApps with Stellar, Solana, and Ethereum, allowing seamless asset transfers and interoperability.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How can developers contribute to multi-chain DApps?</h3>
+            <p>Developers can join our GitHub repositories, participate in hackathons, or claim bounties to contribute to DApp development. Our upcoming SDK will support multi-chain integrations.</p>
         </div>
     </section>
 
