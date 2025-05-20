@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mrwain Organization - Empowering the Pi Ecosystem</title>
-    <meta name="description" content="Mrwain Organization drives innovation in the Pi ecosystem with secure wallets, transparent ledgers, and cutting-edge DApps in beta.">
-    <meta property="og:title" content="Mrwain Organization - Empowering the Pi Ecosystem">
-    <meta property="og:description" content="Join us in building a transparent, decentralized future with Pi-powered DApps.">
-    <meta property="og:image" content="https://www.mrwain.xyz/assets/og-image.jpg">
-    <meta property="og:url" content="https://www.mrwain.xyz">
-    <meta name="twitter:card" content="summary_large_image">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Mrwain Organization - Transparent Pi Ecosystem</title>
+    <meta name="description" content="Mrwain Organization empowers the Pi community with secure custodial wallets, open documentation, and innovative DApps in beta test for a transparent decentralized economy.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
@@ -20,97 +15,100 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: #f5f7fa;
-            color: #1a1a2e;
             line-height: 1.6;
-            font-size: 1.1rem;
-            overflow-x: hidden;
+            color: #1f2a44;
+            background-color: #f7f9fc;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%; /* Prevent iOS text size adjustment */
         }
-        a {
-            text-decoration: none;
-            color: #3b82f6;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-        a:hover, a:focus {
-            color: #2563eb;
-            transform: translateY(-2px);
-        }
-        button {
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-        }
-        .container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        body.no-scroll {
+            overflow: hidden;
         }
 
         /* Header */
         header {
+            background-color: #fff;
+            border-bottom: 1px solid #e6e8eb;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
-            background: linear-gradient(135deg, #1a1a2e, #2a2a4e);
-            color: #fff;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 1.5rem 0;
+            align-items: center;
         }
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #3b82f6, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hamburger {
-            display: none;
-            background: transparent;
-            padding: 1rem;
-        }
-        .hamburger-icon span {
-            display: block;
-            width: 24px;
-            height: 3px;
-            background: #fff;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        .hamburger-icon.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-icon.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-        .main-nav a {
-            color: #fff;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-        }
-        .main-nav a:hover, .main-nav a:focus, .main-nav a[aria-current="page"] {
-            background: rgba(255, 255, 255, 0.1);
-            color: #3b82f6;
+            color: #0052cc;
+            text-align: center;
+            flex: 1;
         }
         .profile-icon {
-            background: transparent;
+            display: none;
+            cursor: pointer;
             padding: 0.5rem;
+            touch-action: manipulation;
         }
         .profile-icon svg {
-            stroke: #fff;
+            fill: #1f2a44;
+            transition: transform 0.2s ease;
+        }
+        .profile-icon:hover svg, .profile-icon:focus svg {
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            touch-action: manipulation;
+        }
+        .hamburger .hamburger-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        .hamburger .hamburger-icon span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #1f2a44;
+            position: absolute;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger .hamburger-icon span:nth-child(1) {
+            top: 6px;
+        }
+        .hamburger .hamburger-icon span:nth-child(2) {
+            top: 11px;
+        }
+        .hamburger .hamburger-icon span:nth-child(3) {
+            top: 16px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        .main-nav {
+            transition: left 0.3s ease-in-out;
         }
         .backdrop {
             position: fixed;
@@ -121,7 +119,7 @@
             background: rgba(0, 0, 0, 0.5);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
             z-index: 999;
         }
         .backdrop.active {
@@ -129,108 +127,321 @@
             visibility: visible;
         }
 
-        /* Hero */
+        /* Navigation Styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            color: #1f2a44;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            touch-action: manipulation;
+        }
+        nav a:hover, nav a:focus, nav a:active {
+            color: #0052cc;
+        }
+        nav a[aria-current="page"] {
+            color: #0052cc;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a, #7c3aed);
-            color: #fff;
+            background: linear-gradient(180deg, #fff 0%, #e6f0fa 100%);
             text-align: center;
             padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
-            opacity: 0.3;
         }
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
         }
         .hero p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1.2s ease-out;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #4b5e7a;
         }
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
-            animation: fadeInUp 1.4s ease-out;
+            flex-wrap: wrap;
         }
         .cta {
-            background: #3b82f6;
+            background: #0052cc;
             color: #fff;
             padding: 1rem 2rem;
-            border-radius: 12px;
+            border-radius: 8px;
+            border: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            touch-action: manipulation;
+            will-change: transform;
         }
         .cta.secondary {
             background: transparent;
-            border: 2px solid #fff;
+            border: 2px solid #0052cc;
+            color: #0052cc;
         }
         .cta:hover, .cta:focus {
-            background: #2563eb;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            background: #003d99;
+            transform: scale(1.05);
         }
         .cta.secondary:hover, .cta.secondary:focus {
-            background: #fff;
-            color: #1e3a8a;
+            background: #e6f0fa;
+            transform: scale(1.05);
+        }
+        .cta:active {
+            transform: scale(0.95);
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        section.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        /* Vision Section */
+        .vision {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
             text-align: center;
-            margin-bottom: 2rem;
-            color: #1a1a2e;
+            opacity: 0;
         }
-        p {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            color: #4b5e7a;
+        .vision h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .vision p {
             font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5e7a;
         }
 
-        /* DApps */
+        /* Mission Section */
+        .mission {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .mission h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .mission p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5e7a;
+        }
+
+        /* Donation Section */
+        .donation {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .donation h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .donation p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5e7a;
+            margin-bottom: 2rem;
+        }
+        .donation .rewards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .reward-card {
+            background: #f7f9fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 250px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .reward-card:hover, .reward-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hall of Fame Section */
+        .hall-of-fame {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+        .hall-of-fame h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .fame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .fame-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .fame-card:hover, .fame-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .fame-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
+        }
+        .fame-card p {
+            font-size: 1rem;
+            color: #4b5e7a;
+        }
+        .fame-card .badge {
+            background: #e6f0fa;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #0052cc;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .feature-card:hover, .feature-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2a44;
+        }
+        .feature-card p {
+            font-size: 1rem;
+            color: #4b5e7a;
+        }
+        .feature-card button {
+            color: #0052cc;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            touch-action: manipulation;
+        }
+        .feature-card button:hover, .feature-card button:focus, .feature-card button:active {
+            text-decoration: underline;
+            transform: scale(1.05);
+        }
+
+        /* DApps Section */
+        .dapps {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            opacity: 0;
+        }
+        .dapps h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
         .dapp-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 2rem;
         }
         .dapp-card {
-            background: #fff;
-            border-radius: 16px;
+            background: #f7f9fc;
             padding: 2rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
         }
-        .dapp-card:hover {
+        .dapp-card:hover, .dapp-card:active {
             transform: translateY(-5px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .dapp-header {
             display: flex;
@@ -239,205 +450,545 @@
             margin-bottom: 1rem;
         }
         .dapp-icon {
-            width: 48px;
-            height: 48px;
-            background: #3b82f6;
-            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #e6f0fa;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0052cc;
         }
         .dapp-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
         }
         .dapp-status {
-            font-size: 0.9rem;
-            color: #6b7280;
+            font-size: 1rem;
+            color: #4b5e7a;
             margin-bottom: 1rem;
+            font-weight: 500;
         }
-        .badge {
+        .dapp-status .badge {
             background: #e6f0fa;
-            color: #3b82f6;
             padding: 0.3rem 0.8rem;
-            border-radius: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #0052cc;
             margin-left: 0.5rem;
-            font-size: 0.8rem;
+        }
+        .dapp-card p {
+            font-size: 0.95rem;
+            color: #4b5e7a;
+            margin-bottom: 1rem;
         }
         .dapp-features {
             list-style: disc;
             padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
             color: #4b5e7a;
+            margin-bottom: 1rem;
         }
         .dapp-card button {
-            background: #3b82f6;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            width: 100%;
-            font-weight: 500;
+            color: #0052cc;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            touch-action: manipulation;
         }
-        .dapp-card button:hover, .dapp-card button:focus {
-            background: #2563eb;
-            transform: translateY(-2px);
+        .dapp-card button:hover, .dapp-card button:focus, .dapp-card button:active {
+            text-decoration: underline;
+            transform: scale(1.05);
         }
 
-        /* Ledger */
+        /* Ledger Transparency Section */
+        .ledger {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+        .ledger h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
         .ledger-table {
             width: 100%;
             border-collapse: collapse;
             background: #fff;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         .ledger-table th, .ledger-table td {
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e6e8eb;
         }
         .ledger-table th {
-            background: #f9fafb;
+            background: #e6f0fa;
             font-weight: 600;
-            color: #1a1a2e;
+            color: #1f2a44;
         }
-        .audit-status {
-            color: #10b981;
+        .ledger-table td a {
+            color: #0052cc;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+            touch-action: manipulation;
         }
-        .audit-status.pending {
-            color: #f59e0b;
+        .ledger-table td a:hover, .ledger-table td a:focus, .ledger-table td a:active {
+            text-decoration: underline;
+            transform: scale(1.05);
         }
 
-        /* Other Grids */
-        .fame-grid, .announcement-grid, .bounty-grid, .community-grid, .metrics-grid, .badge-grid, .testimonial-grid, .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        /* Future Plans Section */
+        .future-plans {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            opacity: 0;
+        }
+        .future-plans h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
+        }
+        .timeline-item {
+            background: #f7f9fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .timeline-item:hover, .timeline-item:active {
+            transform: translateY(-5px);
+        }
+
+        /* Announcements Section */
+        .announcements {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .announcements h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .announcements p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5e7a;
             margin-bottom: 2rem;
         }
-        .fame-card, .announcement-card, .bounty-card, .community-card, .metric-card, .badge-card, .testimonial-card, .faq-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .announcement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-        .fame-card:hover, .announcement-card:hover, .bounty-card:hover, .community-card:hover, .metric-card:hover, .badge-card:hover, .testimonial-card:hover, .faq-card:hover {
+        .announcement-card {
+            background: #f7f9fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .announcement-card:hover, .announcement-card:active {
             transform: translateY(-5px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
-        }
-        .fame-card h3, .announcement-card h3, .bounty-card h3, .community-card h3, .metric-card h3, .testimonial-card h3, .faq-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .fame-badge, .bounty-reward {
-            background: #e6f0fa;
-            color: #3b82f6;
-            padding: 0.4rem 1rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 0.5rem;
-        }
-        .metric-card h3 {
-            font-size: 2rem;
-            color: #3b82f6;
-        }
-        .badge-icon {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .testimonial-card span, .announcement-card .date {
-            font-size: 0.9rem;
-            color: #6b7280;
         }
 
-        /* Roadmap */
-        .roadmap {
-            list-style: none;
-            max-width: 600px;
-            margin: 0 auto;
+        /* About Foundation Section */
+        .about-foundation {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            opacity: 0;
         }
-        .roadmap li {
-            padding: 1rem;
+        .about-foundation h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .about-foundation p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5e7a;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Developer Bounties Section */
+        .bounties {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
             background: #fff;
             border-radius: 12px;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            opacity: 0;
+        }
+        .bounties h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .bounty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .bounty-card {
+            background: #f7f9fc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .bounty-card:hover, .bounty-card:active {
+            transform: translateY(-5px);
         }
 
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #3b82f6;
-            color: #fff;
-            border-radius: 50%;
-            width: 56px;
-            height: 56px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Community Engagement Section */
+        .community {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
             opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .back-to-top.visible {
-            opacity: 1;
+        .community h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
         }
-        .back-to-top:hover, .back-to-top:focus {
-            transform: scale(1.1);
-            background: #2563eb;
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .community-card {
+            background: #f7f9fc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .community-card:hover, .community-card:active {
+            transform: translateY(-5px);
+        }
+
+        /* Transparency Metrics Section */
+        .metrics {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .metrics h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .metric-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .metric-card:hover, .metric-card:active {
+            transform: translateY(-5px);
+        }
+
+        /* Trust Badges Section */
+        .trust-badges {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .trust-badges h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #e6f0fa;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #1f2a44;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .badge:hover, .badge:active {
+            transform: translateY(-5px);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            opacity: 0;
+        }
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: #f7f9fc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .testimonial-card:hover, .testimonial-card:active {
+            transform: translateY(-5px);
+        }
+
+        /* FAQ Section */
+        .faq {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+        .faq h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .faq-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .faq-item:hover, .faq-item:active {
+            transform: translateY(-5px);
+        }
+        .faq-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            font-size: 1rem;
+            color: #4b5e7a;
+        }
+
+        /* Pi Ecosystem Impact Section */
+        .impact {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            opacity: 0;
+        }
+        .impact h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+            transition: transform 0.5s ease;
+        }
+        .impact p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5e7a;
+            margin-bottom: 2rem;
+        }
+
+        /* CTA Banner Section */
+        .cta-banner {
+            max-width: 1280px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            background: #0052cc;
+            border-radius: 12px;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+        }
+        .cta-banner h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-banner .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-banner button {
+            background: #fff;
+            color: #0052cc;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            touch-action: manipulation;
+            will-change: transform;
+        }
+        .cta-banner button:hover, .cta-banner button:focus {
+            background: #e6e8eb;
+            transform: scale(1.05);
+        }
+        .cta-banner button:active {
+            transform: scale(0.95);
         }
 
         /* Footer */
         footer {
-            background: #1a1a2e;
+            background: #000;
             color: #fff;
-            padding: 4rem 2rem;
+            padding: 2rem 1.5rem;
         }
         .footer-content {
-            max-width: 1440px;
+            max-width: 1280px;
             margin: 0 auto;
         }
         .footer-columns {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 160px;
         }
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            color: #fff;
         }
         .footer-column ul {
             list-style: none;
         }
         .footer-column a {
-            color: #d1d5db;
-            font-size: 1rem;
+            color: #e6e8eb;
+            text-decoration: none;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            transition: color 0.3s ease, transform 0.2s ease;
             display: block;
-            margin-bottom: 0.8rem;
+            padding: 0.25rem 0;
+            touch-action: manipulation;
         }
-        .footer-column a:hover, .footer-column a:focus {
-            color: #3b82f6;
+        .footer-column a:hover, .footer-column a:focus, .footer-column a:active {
+            color: #fff;
+            transform: translateX(5px);
         }
         .footer-bottom {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #2a2a4e;
-            padding-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
         }
         .social-links {
             display: flex;
@@ -445,123 +996,299 @@
             gap: 1rem;
         }
         .social-links span {
-            font-size: 1rem;
+            font-size: 0.85rem;
+            color: #e6e8eb;
         }
         .social-links a {
-            color: #d1d5db;
+            color: #e6e8eb;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
+            touch-action: manipulation;
         }
-        .social-links a:hover, .social-links a:focus {
-            color: #3b82f6;
+        .social-links a:hover, .social-links a:focus, .social-links a:active {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        .legal-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         .legal-links a {
-            color: #d1d5db;
-            margin: 0 1rem;
+            color: #e6e8eb;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem;
+            touch-action: manipulation;
         }
-        .legal-links a:hover, .legal-links a:focus {
-            color: #3b82f6;
+        .legal-links a:hover, .legal-links a:focus, .legal-links a:active {
+            color: #fff;
+            transform: translateX(5px);
         }
         .copyright-lang {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+        .copyright-lang span {
+            font-size: 0.8rem;
+            color: #e6e8eb;
+        }
         .language-selector {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
+        .lang-icon {
+            font-size: 0.85rem;
+        }
         .language-selector select {
-            background: #2a2a4e;
+            background: #333;
             color: #fff;
             border: none;
-            padding: 0.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 4px;
+            padding: 0.25rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .language-selector select:focus {
+            outline: none;
+            background: #444;
         }
 
         /* Animations */
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes staggerIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .hero h1.animate, .vision h2.animate, .mission h2.animate, .donation h2.animate, .hall-of-fame h2.animate, .features h2.animate, .dapps h2.animate, .ledger h2.animate, .future-plans h2.animate, .announcements h2.animate, .about-foundation h2.animate, .bounties h2.animate, .community h2.animate, .metrics h2.animate, .trust-badges h3.animate, .testimonials h2.animate, .faq h2.animate, .impact h2.animate, .cta-banner h2.animate {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .main-nav.active li {
+            animation: staggerIn 0.3s ease-out forwards;
+        }
+        .main-nav.active li:nth-child(1) { animation-delay: 0.1s; }
+        .main-nav.active li:nth-child(2) { animation-delay: 0.15s; }
+        .main-nav.active li:nth-child(3) { animation-delay: 0.2s; }
+        .main-nav.active li:nth-child(4) { animation-delay: 0.25s; }
+        .main-nav.active li:nth-child(5) { animation-delay: 0.3s; }
+        .main-nav.active li:nth-child(6) { animation-delay: 0.35s; }
+        .main-nav.active li:nth-child(7) { animation-delay: 0.4s; }
+        .main-nav.active li:nth-child(8) { animation-delay: 0.45s; }
+        .main-nav.active li:nth-child(9) { animation-delay: 0.5s; }
+        .main-nav.active li:nth-child(10) { animation-delay: 0.55s; }
+        .main-nav.active li:nth-child(11) { animation-delay: 0.6s; }
+        .main-nav.active li:nth-child(12) { animation-delay: 0.65s; }
 
-        /* Mobile Styles */
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate, .main-nav.active li, .cta, .feature-card, .dapp-card, .reward-card, .fame-card, .bounty-card, .announcement-card, .timeline-item, .badge, .testimonial-card, .faq-item, .footer-column a, .social-links a, .legal-links a, .hero h1.animate, .vision h2.animate, .mission h2.animate, .donation h2.animate, .hall-of-fame h2.animate, .features h2.animate, .dapps h2.animate, .ledger h2.animate, .future-plans h2.animate, .announcements h2.animate, .about-foundation h2.animate, .bounties h2.animate, .community h2.animate, .metrics h2.animate, .trust-badges h3.animate, .testimonials h2.animate, .faq h2.animate, .impact h2.animate, .cta-banner h2.animate {
+                animation: none;
+                transition: none;
+                transform: none;
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
             .hamburger {
                 display: block;
+            }
+            .profile-icon {
+                display: block;
+            }
+            .logo {
+                font-size: 1.4rem;
             }
             .main-nav {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                left: -100%;
                 width: 80%;
+                max-width: 280px;
                 height: 100%;
-                background: #1a1a2e;
-                padding: 5rem 2rem;
-                transition: right 0.4s ease;
+                background: #fff;
                 z-index: 1000;
+                padding: 4rem 1.5rem;
+                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                overflow-y: auto;
             }
             .main-nav.active {
-                right: 0;
+                left: 0;
             }
-            .main-nav ul {
+            nav ul {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1.5rem;
+                align-items: flex-start;
+                width: 100%;
             }
-            .main-nav a {
+            nav a {
                 font-size: 1.2rem;
+                padding: 0.5rem;
+                display: block;
+                width: 100%;
+                text-align: left;
+                border-radius: 4px;
+                transition: background 0.3s ease, color 0.3s ease;
             }
-            .hero h1 {
-                font-size: 2.5rem;
+            nav a:hover, nav a:focus, nav a:active {
+                background: #e6f0fa;
+                color: #0052cc;
             }
-            .hero p {
-                font-size: 1.1rem;
+            .hero {
+                padding: 4rem 1.5rem;
             }
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-            .ledger-table th:nth-child(4), .ledger-table td:nth-child(4) {
-                display: none;
-            }
-            .ledger-table th, .ledger-table td {
-                font-size: 0.95rem;
-                padding: 1rem;
-            }
-            section {
-                padding: 3rem 1.5rem;
-            }
-            .back-to-top {
-                bottom: 1.5rem;
-                right: 1.5rem;
-                width: 48px;
-                height: 48px;
-                font-size: 1.2rem;
-            }
-        }
-        @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2rem;
             }
             .hero p {
                 font-size: 1rem;
             }
-            h2 {
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .vision, .mission, .donation, .hall-of-fame, .features, .dapps, .ledger, .future-plans, .announcements, .about-foundation, .bounties, .community, .metrics, .testimonials, .faq, .impact, .cta-banner {
+                padding: 0 1.5rem;
+            }
+            .vision h2, .mission h2, .donation h2, .hall-of-fame h2, .features h2, .dapps h2, .ledger h2, .future-plans h2, .announcements h2, .about-foundation h2, .bounties h2, .community h2, .metrics h2, .testimonials h2, .faq h2, .impact h2, .cta-banner h2 {
                 font-size: 1.8rem;
             }
-            .dapp-card, .fame-card, .announcement-card, .bounty-card, .community-card, .metric-card, .badge-card, .testimonial-card, .faq-card {
+            .trust-badges h3 {
+                font-size: 1.6rem;
+            }
+            .vision p, .mission p, .donation p, .announcements p, .about-foundation p, .impact p, .cta-banner p {
+                font-size: 1rem;
+            }
+            .feature-card, .dapp-card, .testimonial-card, .community-card, .reward-card, .fame-card, .bounty-card, .announcement-card, .metric-card, .timeline-item {
                 padding: 1.5rem;
+            }
+            .feature-card h3, .dapp-card h3, .bounty-card h3, .community-card h3, .announcement-card h3 {
+                font-size: 1.3rem;
+            }
+            .fame-card h3 {
+                font-size: 1.2rem;
+            }
+            .badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .ledger-table {
+                font-size: 0.9rem;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .ledger-table th, .ledger-table td {
+                padding: 0.75rem;
+                min-width: 120px;
+            }
+            .ledger-table th:nth-child(3), .ledger-table td:nth-child(3) {
+                display: none; /* Hide Audit Status on small screens */
+            }
+            .timeline {
+                gap: 1rem;
+            }
+            .mission, .donation, .dapps, .future-plans, .announcements, .bounties, .community, .testimonials, .impact, .cta-banner {
+                padding: 2rem 1.5rem;
+            }
+            .reward-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            .dapp-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .faq-item {
+                padding: 1rem;
+            }
+            .faq-item h3 {
+                font-size: 1.2rem;
+            }
+            .footer-columns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .footer-column {
+                min-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .social-links, .legal-links, .copyright-lang {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .legal-links {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            .copyright-lang {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .cta {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .vision h2, .mission h2, .donation h2, .hall-of-fame h2, .features h2, .dapps h2, .ledger h2, .future-plans h2, .announcements h2, .about-foundation h2, .bounties h2, .community h2, .metrics h2, .testimonials h2, .faq h2, .impact h2, .cta-banner h2 {
+                font-size: 1.6rem;
+            }
+            .trust-badges h3 {
+                font-size: 1.4rem;
+            }
+            .feature-card, .dapp-card, .testimonial-card, .community-card, .reward-card, .fame-card, .bounty-card, .announcement-card, .metric-card, .timeline-item {
+                padding: 1rem;
+            }
+            .ledger-table th, .ledger-table td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Backdrop for Mobile Menu -->
     <div class="backdrop"></div>
+
+    <!-- Header -->
     <header>
-        <div class="nav-container container">
+        <div class="nav-container">
             <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <div class="hamburger-icon">
                     <span></span>
@@ -571,484 +1298,569 @@
             </button>
             <div class="logo">Mrwain Organization</div>
             <button class="profile-icon" aria-label="User profile">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f2a44" stroke-width="2">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
             </button>
             <nav aria-label="Main navigation" class="main-nav">
                 <ul>
-                    <li><a href="/" aria-current="page">Home</a></li>
-                    <li><a href="/vision.html">Vision</a></li>
-                    <li><a href="/mission.html">Mission</a></li>
-                    <li><a href="/dapps.html">DApps</a></li>
-                    <li><a href="/ledger.html">Ledger</a></li>
-                    <li><a href="/donation.html">Donations</a></li>
-                    <li><a href="/hall-of-fame.html">Hall of Fame</a></li>
-                    <li><a href="/future-plans.html">Future Plans</a></li>
-                    <li><a href="/announcement.html">Announcements</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/community.html">Community</a></li>
-                    <li><a href="/chain.html">Chain</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="dapps.html">DApps</a></li>
+                    <li><a href="ledger.html">Ledger</a></li>
+                    <li><a href="donation.html">Donations</a></li>
+                    <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                    <li><a href="future-plans.html">Future Plans</a></li>
+                    <li><a href="announcement.html">Announcements</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="chain.html">Chain</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Empowering the Pi Ecosystem</h1>
-                <p>Join us in building a transparent, decentralized future with secure wallets and innovative DApps.</p>
-                <div class="cta-buttons">
-                    <a href="/dapps.html" class="cta">Explore DApps</a>
-                    <a href="/donation.html" class="cta secondary">Support Us</a>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Building a Transparent Pi Ecosystem</h1>
+        <p>Mrwain Organization empowers the Pi community with secure custodial wallets, open documentation, and beta DApps for a decentralized economy.</p>
+        <div class="cta-buttons">
+            <button class="cta" onclick="window.location.href='dapps.html'">Explore Our DApps</button>
+            <button class="cta secondary" onclick="window.location.href='ledger.html'">View Ledger</button>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision" id="vision">
+        <h2>Our Vision</h2>
+        <p>We envision a world where the Pi ecosystem drives global financial inclusion through beta-tested DApps, enabling billions to participate in a transparent digital economy.</p>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <h2>Our Mission</h2>
+        <p>Mrwain Organization is dedicated to fostering trust in the Pi community by delivering secure, open-source DApps in beta test, transparent documentation, and a clear roadmap.</p>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation" id="donation">
+        <h2>Support Our Mission</h2>
+        <p>Your donations in Pi help us develop beta DApps, enhance transparency, and grow the Pi ecosystem. As a donor, you’ll receive exclusive rewards and recognition.</p>
+        <div class="rewards">
+            <div class="reward-card">
+                <h3>Hall of Fame</h3>
+                <p>Be recognized on our Hall of Fame page for your contributions.</p>
+            </div>
+            <div class="reward-card">
+                <h3>Early Access</h3>
+                <p>Get early access to new DApp features in beta.</p>
+            </div>
+            <div class="reward-card">
+                <h3>Custom Badges</h3>
+                <p>Earn unique badges to showcase your support.</p>
+            </div>
+            <div class="reward-card">
+                <h3>Exclusive Updates</h3>
+                <p>Receive insider updates on beta DApps.</p>
+            </div>
+        </div>
+        <button class="cta" onclick="window.location.href='donation.html'">Donate Now</button>
+    </section>
+
+    <!-- Hall of Fame Section -->
+    <section class="hall-of-fame" id="hall-of-fame">
+        <h2>Hall of Fame</h2>
+        <div class="fame-grid">
+            <div class="fame-card">
+                <h3>PiPioneer123</h3>
+                <p>Platinum Donor</p>
+                <div class="badge">Star Supporter</div>
+            </div>
+            <div class="fame-card">
+                <h3>CryptoJane</h3>
+                <p>Gold Donor</p>
+                <div class="badge">Visionary</div>
+            </div>
+            <div class="fame-card">
+                <h3>BlockMaster</h3>
+                <p>Silver Donor</p>
+                <div class="badge">Innovator</div>
+            </div>
+            <div class="fame-card">
+                <h3>PiDev2025</h3>
+                <p>Bronze Donor</p>
+                <div class="badge">Contributor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Our Commitment to Transparency</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Official Pi Wallets</h3>
+                <p>Access audited, secure custodial wallet addresses for each beta DApp.</p>
+                <button onclick="window.location.href='ledger.html'">View Wallets</button>
+            </div>
+            <div class="feature-card">
+                <h3>Transparent Documentation</h3>
+                <p>Explore open documentation for beta DApps, including technical specs.</p>
+                <button onclick="window.location.href='documentation.html'">Explore Docs</button>
+            </div>
+            <div class="feature-card">
+                <h3>Future Roadmap</h3>
+                <p>Stay informed about our plans for beta DApps and Pi ecosystem growth.</p>
+                <button onclick="window.location.href='future-plans.html'">See Roadmap</button>
+            </div>
+            <div class="feature-card">
+                <h3>Open Source Code</h3>
+                <p>Contribute to our public source code for beta DApps and smart contracts.</p>
+                <button onclick="window.location.href='https://github.com/wainfoundation'">Contribute Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DApps Section -->
+    <section class="dapps" id="dapps">
+        <h2>Our DApps (Beta)</h2>
+        <div class="dapp-grid">
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">QP</div>
+                    <h3>Quantum Pay</h3>
                 </div>
-            </div>
-        </section>
-        <section class="vision" id="vision">
-            <div class="container">
-                <h2>Our Vision</h2>
-                <p>We envision a global Pi ecosystem that drives financial inclusion through secure, beta-tested DApps, empowering billions in a transparent digital economy.</p>
-                <a href="/vision.html" class="cta">Learn More</a>
-            </div>
-        </section>
-        <section class="mission" id="mission">
-            <div class="container">
-                <h2>Our Mission</h2>
-                <p>We empower the Pi community with audited custodial wallets, open-source collaboration, and innovative DApps in beta testing.</p>
-                <a href="/mission.html" class="cta">Discover Our Mission</a>
-            </div>
-        </section>
-        <section class="dapps" id="dapps">
-            <div class="container">
-                <h2>Our DApps (Beta)</h2>
-                <div class="dapp-grid">
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">QP</div>
-                            <h3>Quantum Pay</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Decentralized payment platform for secure Pi transactions.</p>
-                        <ul class="dapp-features">
-                            <li>Fast payment processing</li>
-                            <li>Secure wallet integration</li>
-                            <li>Merchant support</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/quantumpay.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">TW</div>
-                            <h3>TruthWeb</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Social platform for authentic content on Pi Network.</p>
-                        <ul class="dapp-features">
-                            <li>Content verification</li>
-                            <li>User rewards</li>
-                            <li>Community moderation</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/truthweb.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">CL</div>
-                            <h3>Cloudy</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Secure cloud storage powered by Pi Network.</p>
-                        <ul class="dapp-features">
-                            <li>Encrypted storage</li>
-                            <li>Pi-based subscriptions</li>
-                            <li>File sharing</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/cloudy.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">DL</div>
-                            <h3>Droplink</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Peer-to-peer file-sharing DApp using Pi.</p>
-                        <ul class="dapp-features">
-                            <li>Private file transfers</li>
-                            <li>Pi rewards</li>
-                            <li>Cross-platform support</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/droplink.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">TH</div>
-                            <h3>TaskHub</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Platform for task management with Pi rewards.</p>
-                        <ul class="dapp-features">
-                            <li>Task assignments</li>
-                            <li>Pi micropayments</li>
-                            <li>Collaboration tools</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/taskhub.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">SL</div>
-                            <h3>Salenus</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Web3 social network on Pi Network.</p>
-                        <ul class="dapp-features">
-                            <li>User-owned data</li>
-                            <li>Community rewards</li>
-                            <li>Profile customization</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/salenus.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">TF</div>
-                            <h3>Trend Forge Update</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>News aggregator for Pi ecosystem updates.</p>
-                        <ul class="dapp-features">
-                            <li>Verified news</li>
-                            <li>Curator rewards</li>
-                            <li>Real-time feeds</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/trendforge.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">SS</div>
-                            <h3>SmartSolve</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>AI-powered platform for solutions using Pi.</p>
-                        <ul class="dapp-features">
-                            <li>AI tools</li>
-                            <li>Premium features</li>
-                            <li>Knowledge base</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/smartsolve.html'">View Documentation</button>
-                    </div>
-                    <div class="dapp-card">
-                        <div class="dapp-header">
-                            <div class="dapp-icon">SU</div>
-                            <h3>SundaySoul</h3>
-                        </div>
-                        <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
-                        <p>Wellness platform for meditation on Pi.</p>
-                        <ul class="dapp-features">
-                            <li>Meditation sessions</li>
-                            <li>Wellness rewards</li>
-                            <li>Support groups</li>
-                        </ul>
-                        <button onclick="window.location.href='/docs/sundaysoul.html'">View Documentation</button>
-                    </div>
-                </div>
-                <a href="/dapps.html" class="cta">View All DApps</a>
-            </div>
-        </section>
-        <section class="ledger" id="ledger">
-            <div class="container">
-                <h2>Ledger Transparency</h2>
-                <p>Our custodial wallets are audited for transparency. Explore our transaction ledger below.</p>
-                <table class="ledger-table">
-                    <thead>
-                        <tr>
-                            <th>Wallet Address</th>
-                            <th>Amount (Pi)</th>
-                            <th>Date</th>
-                            <th class="audit-status">Audit Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="https://blockexplorer.minepi.com/address/[REAL_ADDRESS_1]" target="_blank">Pi1...a2b3</a></td>
-                            <td>1,000</td>
-                            <td>2025-04-15</td>
-                            <td class="audit-status">Audited</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://blockexplorer.minepi.com/address/[REAL_ADDRESS_2]" target="_blank">Pi2...c4d5</a></td>
-                            <td>500</td>
-                            <td>2025-04-10</td>
-                            <td class="audit-status pending">Pending</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://blockexplorer.minepi.com/address/[REAL_ADDRESS_3]" target="_blank">Pi3...e6f7</a></td>
-                            <td>2,000</td>
-                            <td>2025-04-05</td>
-                            <td class="audit-status">Audited</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="/ledger.html" class="cta">View Full Ledger</a>
-            </div>
-        </section>
-        <section class="donation" id="donation">
-            <div class="container">
-                <h2>Support Our Mission</h2>
-                <p>Your contributions fuel the development of secure wallets and innovative DApps for the Pi ecosystem.</p>
-                <a href="/donation.html" class="cta">Donate Now</a>
-            </div>
-        </section>
-        <section class="hall-of-fame" id="hall-of-fame">
-            <div class="container">
-                <h2>Hall of Fame</h2>
-                <p>Celebrating our top contributors driving the Pi ecosystem forward.</p>
-                <div class="fame-grid">
-                    <div class="fame-card">
-                        <h3>Jane Doe</h3>
-                        <p>Developed Quantum Pay’s payment API.</p>
-                        <span class="fame-badge">Top Developer</span>
-                    </div>
-                    <div class="fame-card">
-                        <h3>John Smith</h3>
-                        <p>Contributed to TruthWeb’s moderation system.</p>
-                        <span class="fame-badge">Community Leader</span>
-                    </div>
-                    <div class="fame-card">
-                        <h3>Alice Brown</h3>
-                        <p>Designed Cloudy’s encryption protocol.</p>
-                        <span class="fame-badge">Security Expert</span>
-                    </div>
-                </div>
-                <a href="/hall-of-fame.html" class="cta">Meet Our Contributors</a>
-            </div>
-        </section>
-        <section class="future-plans" id="future-plans">
-            <div class="container">
-                <h2>Future Plans</h2>
-                <p>We’re expanding with new DApps, enhanced security, and global Pi adoption.</p>
-                <ul class="roadmap">
-                    <li>Q2 2025: Launch Quantum Pay v2</li>
-                    <li>Q3 2025: Expand TruthWeb globally</li>
-                    <li>Q4 2025: Introduce AI-driven DApps</li>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Decentralized payment platform for secure Pi transactions.</p>
+                <ul class="dapp-features">
+                    <li>Fast payment processing</li>
+                    <li>Secure wallet integration</li>
+                    <li>Merchant support</li>
                 </ul>
-                <a href="/future-plans.html" class="cta">See Our Roadmap</a>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/quantumpay-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="announcements" id="announcements">
-            <div class="container">
-                <h2>Latest Announcements</h2>
-                <div class="announcement-grid">
-                    <div class="announcement-card">
-                        <h3>Quantum Pay Beta Launch</h3>
-                        <p>Quantum Pay is now in beta! Test it in the Pi Browser.</p>
-                        <span class="date">2025-04-20</span>
-                    </div>
-                    <div class="announcement-card">
-                        <h3>TruthWeb Moderation Update</h3>
-                        <p>New community moderation tools released.</p>
-                        <span class="date">2025-04-15</span>
-                    </div>
-                    <div class="announcement-card">
-                        <h3>Cloudy Beta Expansion</h3>
-                        <p>Cloudy now supports file sharing.</p>
-                        <span class="date">2025-04-10</span>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">TW</div>
+                    <h3>TruthWeb</h3>
                 </div>
-                <a href="/announcement.html" class="cta">View All Announcements</a>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Social platform for authentic content on Pi Network.</p>
+                <ul class="dapp-features">
+                    <li>Content verification</li>
+                    <li>User rewards</li>
+                    <li>Community moderation</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/truthweb-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="about-foundation" id="about-foundation">
-            <div class="container">
-                <h2>About Mrwain Organization</h2>
-                <p>Founded to empower the Pi community, we focus on transparency, security, and innovation through open-source DApps and audited wallets.</p>
-                <a href="/about.html" class="cta">Our Story</a>
-            </div>
-        </section>
-        <section class="bounties" id="bounties">
-            <div class="container">
-                <h2>Developer Bounties</h2>
-                <p>Join our developer community and earn Pi by contributing to our DApps.</p>
-                <div class="bounty-grid">
-                    <div class="bounty-card">
-                        <h3>Quantum Pay API</h3>
-                        <p>Enhance merchant integration.</p>
-                        <span class="bounty-reward">500 Pi</span>
-                    </div>
-                    <div class="bounty-card">
-                        <h3>TruthWeb UI</h3>
-                        <p>Improve mobile UX.</p>
-                        <span class="bounty-reward">300 Pi</span>
-                    </div>
-                    <div class="bounty-card">
-                        <h3>Cloudy Security</h3>
-                        <p>Audit encryption protocols.</p>
-                        <span class="bounty-reward">700 Pi</span>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">CL</div>
+                    <h3>Cloudy</h3>
                 </div>
-                <a href="/bounties.html" class="cta">Explore Bounties</a>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Secure cloud storage powered by Pi Network.</p>
+                <ul class="dapp-features">
+                    <li>Encrypted storage</li>
+                    <li>Pi-based subscriptions</li>
+                    <li>File sharing</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/cloudy-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="community" id="community">
-            <div class="container">
-                <h2>Join Our Community</h2>
-                <p>Connect with pioneers, developers, and enthusiasts in the Pi ecosystem.</p>
-                <div class="community-grid">
-                    <div class="community-card">
-                        <h3>Discord</h3>
-                        <p>Join our server for real-time discussions.</p>
-                        <a href="https://discord.gg/q37VBF5fjU" class="cta secondary">Join Now</a>
-                    </div>
-                    <div class="community-card">
-                        <h3>X Platform</h3>
-                        <p>Follow us for updates and events.</p>
-                        <a href="https://x.com/wainfoundation" class="cta secondary">Follow Us</a>
-                    </div>
-                    <div class="community-card">
-                        <h3>Hackathons</h3>
-                        <p>Participate in our developer events.</p>
-                        <a href="/community.html#hackathons" class="cta secondary">Learn More</a>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">DL</div>
+                    <h3>Droplink</h3>
                 </div>
-                <a href="/community.html" class="cta">Get Involved</a>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Peer-to-peer file-sharing DApp using Pi.</p>
+                <ul class="dapp-features">
+                    <li>Private file transfers</li>
+                    <li>Pi rewards</li>
+                    <li>Cross-platform support</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/droplink/'">View Documentation</button>
             </div>
-        </section>
-        <section class="metrics" id="metrics">
-            <div class="container">
-                <h2>Our Impact</h2>
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <h3>10,000+</h3>
-                        <p>Active Beta Testers</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>9</h3>
-                        <p>DApps in Beta</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>50+</h3>
-                        <p>Contributors</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>1M+</h3>
-                        <p>Pi Transacted</p>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">TH</div>
+                    <h3>TaskHub</h3>
                 </div>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Platform for task management with Pi rewards.</p>
+                <ul class="dapp-features">
+                    <li>Task assignments</li>
+                    <li>Pi micropayments</li>
+                    <li>Collaboration tools</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/taskhub-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="trust-badges" id="trust-badges">
-            <div class="container">
-                <h2>Trusted by the Pi Community</h2>
-                <div class="badge-grid">
-                    <div class="badge-card">
-                        <span class="badge-icon">🔒</span>
-                        <p>Audited Wallets</p>
-                    </div>
-                    <div class="badge-card">
-                        <span class="badge-icon">📖</span>
-                        <p>Open Documentation</p>
-                    </div>
-                    <div class="badge-card">
-                        <span class="badge-icon">🌐</span>
-                        <p>Community-Driven</p>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">SL</div>
+                    <h3>Salenus</h3>
                 </div>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Web3 social network on Pi Network.</p>
+                <ul class="dapp-features">
+                    <li>User-owned data</li>
+                    <li>Community rewards</li>
+                    <li>Profile customization</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/salenus-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="testimonials" id="testimonials">
-            <div class="container">
-                <h2>What Our Community Says</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p>“Quantum Pay makes Pi transactions seamless!”</p>
-                        <h3>Sarah K.</h3>
-                        <span>Beta Tester</span>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>“TruthWeb is a game-changer for authentic content.”</p>
-                        <h3>Michael R.</h3>
-                        <span>Community Moderator</span>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>“Cloudy’s encryption gives me peace of mind.”</p>
-                        <h3>Emily T.</h3>
-                        <span>Developer</span>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">TF</div>
+                    <h3>Trend Forge Update</h3>
                 </div>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>News aggregator for Pi ecosystem updates.</p>
+                <ul class="dapp-features">
+                    <li>Verified news</li>
+                    <li>Curator rewards</li>
+                    <li>Real-time feeds</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/trend-forge-update-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="faq" id="faq">
-            <div class="container">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-grid">
-                    <div class="faq-card">
-                        <h3>How do I join the beta?</h3>
-                        <p>Visit our DApps page and sign up via the Pi Browser.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h3>Are wallets secure?</h3>
-                        <p>Yes, our custodial wallets are audited for transparency.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h3>How can I contribute?</h3>
-                        <p>Check out our bounties or join our community.</p>
-                    </div>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">SS</div>
+                    <h3>SmartSolve</h3>
                 </div>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>AI-powered platform for solutions using Pi.</p>
+                <ul class="dapp-features">
+                    <li>AI tools</li>
+                    <li>Premium features</li>
+                    <li>Knowledge base</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/smartsolve-docs/'">View Documentation</button>
             </div>
-        </section>
-        <section class="cta-banner" id="cta-banner">
-            <div class="container">
-                <h2>Ready to Join the Pi Revolution?</h2>
-                <p>Explore our DApps, contribute to our mission, or donate to support the ecosystem.</p>
-                <div class="cta-buttons">
-                    <a href="/dapps.html" class="cta">Get Started</a>
-                    <a href="/donation.html" class="cta secondary">Donate</a>
+            <div class="dapp-card">
+                <div class="dapp-header">
+                    <div class="dapp-icon">SU</div>
+                    <h3>SundaySoul</h3>
                 </div>
+                <div class="dapp-status">In Beta Test<span class="badge">Beta</span></div>
+                <p>Wellness platform for meditation on Pi.</p>
+                <ul class="dapp-features">
+                    <li>Meditation sessions</li>
+                    <li>Wellness rewards</li>
+                    <li>Support groups</li>
+                </ul>
+                <button onclick="window.location.href='https://truthwebdocs.gitbook.io/sundaysoul-docs/'">View Documentation</button>
             </div>
-        </section>
-    </main>
-    <button class="back-to-top" aria-label="Back to top">↑</button>
+        </div>
+    </section>
+
+    <!-- Ledger Transparency Section -->
+    <section class="ledger" id="ledger">
+        <h2>Ledger Transparency</h2>
+        <table class="ledger-table" aria-label="DApp wallet transaction ledger">
+            <thead>
+                <tr>
+                    <th>DApp</th>
+                    <th>Wallet Address</th>
+                    <th>Audit Status</th>
+                    <th>Track Transactions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mrwain Foundation</td>
+                    <td>GDSXE723WPHZ5RGIJCSYXTPKSOIGPTSXE4RF5U3JTNGTCHXON7ZVD4LJ</td>
+                    <td>Audited</td>
+                    <td><a href="https://blockexplorer.minepi.com/mainnet/accounts/GDSXE723WPHZ5RGIJCSYXTPKSOIGPTSXE4RF5U3JTNGTCHXON7ZVD4LJ" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>Quantum Pay</td>
+                    <td>Pi1...a2b3 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi1...a2b3" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>TruthWeb</td>
+                    <td>Pi2...c4d5 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi2...c4d5" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>Cloudy</td>
+                    <td>Pi3...e6f7 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi3...e6f7" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>Droplink</td>
+                    <td>Pi4...g8h9 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi4...g8h9" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>TaskHub</td>
+                    <td>Pi5...i0j1 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi5...i0j1" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>Salenus</td>
+                    <td>Pi6...k2l3 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi6...k2l3" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>Trend Forge</td>
+                    <td>Pi7...m4n5 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi7...m4n5" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>SmartSolve</td>
+                    <td>Pi8...o9p0 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi8...o9p0" target="_blank">View on Block Explorer</a></td>
+                </tr>
+                <tr>
+                    <td>SundaySoul</td>
+                    <td>Pi9...q1r2 (Placeholder)</td>
+                    <td>Pending</td>
+                    <td><a href="https://blockexplorer.minepi.com/address/Pi9...q1r2" target="_blank">View on Block Explorer</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Future Plans Section -->
+    <section class="future-plans" id="future-plans">
+        <h2>Our Future Plans</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Q2 2025: DApp Expansion</h3>
+                <p>Enhance beta features for Quantum Pay and Salenus, including improved user interfaces.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Q3 2025: Developer SDK</h3>
+                <p>Release a beta Pi-based SDK for developers to build DApps.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Q4 2025: Global Outreach</h3>
+                <p>Promote beta DApps adoption through global partnerships.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2026: Governance Protocol</h3>
+                <p>Introduce a beta decentralized governance model for community voting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="announcements" id="announcements">
+        <h2>Latest Announcements</h2>
+        <p>Stay updated with the latest news on our beta DApps and developments.</p>
+        <div class="announcement-grid">
+            <div class="announcement-card">
+                <h3>Quantum Pay Beta Launch</h3>
+                <div class="date">April 15, 2025</div>
+                <p>Quantum Pay beta is live, featuring secure Pi transactions.</p>
+            </div>
+            <div class="announcement-card">
+                <h3>Developer SDK Beta</h3>
+                <div class="date">March 20, 2025</div>
+                <p>Our Pi-based SDK beta is open for developers to test.</p>
+            </div>
+            <div class="announcement-card">
+                <h3>SecurePi Partnership</h3>
+                <div class="date">February 10, 2025</div>
+                <p>Partnered with SecurePi to audit beta DApp wallets.</p>
+            </div>
+        </div>
+        <button class="cta" onclick="window.location.href='announcement.html'">View All Announcements</button>
+    </section>
+
+    <!-- About Foundation Section -->
+    <section class="about-foundation" id="about-foundation">
+        <h2>About the Expanding Foundation</h2>
+        <p>Founded in 2023, Mrwain Organization is advancing the Pi Network with beta DApps for a decentralized economy. Our global team builds transparent, open-source solutions.</p>
+        <p>We publish wallet addresses and source code for community scrutiny, expanding through partnerships and developer programs to make Pi a Web3 cornerstone.</p>
+    </section>
+
+    <!-- Developer Bounties Section -->
+    <section class="bounties">
+        <h2>Developer Bounties</h2>
+        <div class="bounty-grid">
+            <div class="bounty-card">
+                <h3>Feature Development</h3>
+                <p>Earn Pi by building features for beta DApps like Quantum Pay.</p>
+            </div>
+            <div class="bounty-card">
+                <h3>Bug Fixes</h3>
+                <p>Fix bugs in our beta DApps to improve performance.</p>
+            </div>
+            <div class="bounty-card">
+                <h3>Documentation</h3>
+                <p>Write documentation for beta DApps to support users.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Engagement Section -->
+    <section class="community" id="community">
+        <h2>Join Our Community</h2>
+        <div class="community-grid">
+            <div class="community-card">
+                <h3>Developer Forums</h3>
+                <p>Discuss beta DApp ideas and share code in our forums.</p>
+            </div>
+            <div class="community-card">
+                <h3>Hackathons</h3>
+                <p>Join hackathons to build beta Pi-based DApps and win rewards.</p>
+            </div>
+            <div class="community-card">
+                <h3>Contribute Code</h3>
+                <p>Contribute to beta DApps on GitHub, like Quantum Pay.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Metrics Section -->
+    <section class="metrics">
+        <h2>Transparency in Action</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>9</h3>
+                <p>Beta DApps Launched</p>
+            </div>
+            <div class="metric-card">
+                <h3>10</h3>
+                <p>Beta Wallets Audited</p>
+            </div>
+            <div class="metric-card">
+                <h3>1,000</h3>
+                <p>GitHub Commits</p>
+            </div>
+            <div class="metric-card">
+                <h3>40,000+</h3>
+                <p>Community Members</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="trust-badges">
+        <h3>Trusted by the Pi Community</h3>
+        <div class="badges">
+            <div class="badge">Audited by SecurePi</div>
+            <div class="badge">Open Source Certified</div>
+            <div class="badge">Pi Network Partner</div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What the Pi Community Says</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"Mrwain’s transparency with beta DApps builds real trust in the Pi ecosystem."</p>
+                <div class="author">Alice K., Pi Pioneer</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Quantum Pay beta makes Pi transactions secure. Excited for more!"</p>
+                <div class="author">John M., Developer</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The beta documentation is clear, making it easy to contribute."</p>
+                <div class="author">Sarah L., Community Member</div>
+            </div>
+        </div>
+    </section>
+
+        <!-- FAQ Section (Continued) -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>What is the Mrwain Organization?</h3>
+            <p>The Mrwain Organization is a foundation advancing the Pi Network by developing beta DApps, providing transparent custodial wallets, and fostering community engagement.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How can I contribute to beta DApps?</h3>
+            <p>You can contribute by joining our developer bounties, submitting code on GitHub, or providing feedback during beta testing. Visit our <a href="community.html">Community</a> page for details.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Are the custodial wallets secure?</h3>
+            <p>Yes, our wallets are audited by trusted partners like SecurePi, and transactions are trackable on the Pi Block Explorer. See our <a href="ledger.html">Ledger</a> for details.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How do I donate to Mrwain?</h3>
+            <p>Donate Pi through our secure donation portal to support beta DApp development and earn rewards like Hall of Fame recognition. Visit <a href="donation.html">Donations</a> to learn more.</p>
+        </div>
+    </section>
+
+    <!-- Pi Ecosystem Impact Section -->
+    <section class="impact" id="impact">
+        <h2>Impact on the Pi Ecosystem</h2>
+        <p>Mrwain Organization is driving the Pi Network’s growth by launching beta DApps that empower users with secure, decentralized tools. Our transparent wallets and open-source code ensure trust, while our community programs engage thousands of Pi Pioneers worldwide.</p>
+        <p>Through beta testing and global partnerships, we’re building a foundation for Pi to become a leading Web3 platform, enabling financial inclusion and innovation.</p>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="cta-banner" id="cta-banner">
+        <h2>Join the Pi Revolution</h2>
+        <p>Be part of the Mrwain Organization’s mission to build a transparent, decentralized future with beta DApps. Explore, contribute, or donate today!</p>
+        <div class="cta-buttons">
+            <button onclick="window.location.href='dapps.html'">Explore DApps</button>
+            <button onclick="window.location.href='donation.html'">Donate Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="footer-content container">
+        <div class="footer-content">
             <div class="footer-columns">
                 <div class="footer-column">
                     <h3>About Us</h3>
                     <ul>
-                        <li><a href="/about.html">Our Story</a></li>
-                        <li><a href="/vision.html">Vision</a></li>
-                        <li><a href="/mission.html">Mission</a></li>
-                        <li><a href="/future-plans.html">Roadmap</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="future-plans.html">Roadmap</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>DApps & Transparency</h3>
                     <ul>
-                        <li><a href="/dapps.html">Our DApps</a></li>
-                        <li><a href="/ledger.html">Ledger Transparency</a></li>
+                        <li><a href="dapps.html">Our DApps</a></li>
+                        <li><a href="ledger.html">Ledger Transparency</a></li>
                         <li><a href="https://github.com/wainfoundation">Source Code</a></li>
+                        <li><a href="documentation.html">Documentation</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Developers</h3>
                     <ul>
-                        <li><a href="/bounties.html">Bounties</a></li>
+                        <li><a href="bounties.html">Bounties</a></li>
                         <li><a href="https://github.com/wainfoundation">GitHub</a></li>
-                        <li><a href="/community.html#hackathons">Hackathons</a></li>
+                        <li><a href="community.html#hackathons">Hackathons</a></li>
+                        <li><a href="documentation.html">SDK Docs</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Community</h3>
                     <ul>
-                        <li><a href="/community.html">Join Us</a></li>
-                        <li><a href="/hall-of-fame.html">Hall of Fame</a></li>
-                        <li><a href="/announcement.html">Announcements</a></li>
-                        <li><a href="/donation.html">Donate</a></li>
+                        <li><a href="community.html">Join Us</a></li>
+                        <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="donation.html">Donate</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Connect</h3>
                     <ul>
                         <li><a href="https://x.com/wainfoundation">X</a></li>
-                        <li><a href="https://discord.gg/q37VBF5fjU" target="_blank">Discord</a></li>
+                        <li><a href="https://discord.gg/q37VBF5fjU" target="_blank">Discord </a></li>
                         <li><a href="https://www.linkedin.com/in/wainfoundation-9a30b9367/" target="_blank">LinkedIn</a></li>
-                        <li><a href="mailto:mrwainorganization@gmail.com">Contact Us</a></li>
+                        <li><a href="mrwainorganization@gmail.com">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -1060,24 +1872,24 @@
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
-                    <a href="https://discord.gg/q37VBF5fjU" aria-label="Join our Discord">
+                    <a href="https://discord.gg/q37VBF5fjU" aria-label="Join our Discord (Placeholder)">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.4336-.4447 1.0066-.6088 1.4689a18.5558 18.5558 0 00-5.487 0c-.1642-.4623-.3978-1.0354-.6088-1.4689a.0751.0751 0 00-.0785-.0371 19.7913 19.7913 0 00-4.8851 1.5152.0696.0696 0 00-.0323.0277C.5337 9.0458-.319 13.5799.0991 18.0578a.0824.0824 0 00.0312.0561c2.0318 1.5138 4.0736 2.4969 6.1003 3.2052a.0771.0771 0 00.0839-.0249c.4667-.6178.9149-1.2798 1.2791-1.9756a.0761.0761 0 00-.0413-.1057c-.6522-.2946-1.2739-.6065-1.8722-.9128a.0741.0741 0 01-.0206-.0927c.1262-.1678.2524-.3177.3858-.476a.0751.0751 0 01.0894-.0112c3.9268 1.7967 8.1837 1.7967 12.1045 0a.0751.0751 0 01.0894.0112c.1334.1583.2596.3082.3858.476a.0741.0741 0 01-.0206.0927c-.5983.3063-1.22.6182-1.8722.9128a.0761.0761 0 00-.0413.1057c.3642.6958.8124 1.3578 1.2791 1.9756a.0771.0771 0 00.0839.0249c2.0267-.7083 4.0685-1.6914 6.1003-3.2052a.0824.0824 0 00.0312-.0561c.4609-4.9519-.5457-9.4624-3.4964-13.6882a.0696.0696 0 00-.0323-.0277zM8.918 15.6897c-1.1884 0-2.1623-1.0789-2.1623-2.4045s.9659-2.4045 2.1623-2.4045c1.1964 0 2.1623 1.0789 2.1623 2.4045s-.9659 2.4045-2.1623 2.4045zm6.164 0c-1.1884 0-2.1623-1.0789-2.1623-2.4045s.9659-2.4045 2.1623-2.4045c1.1964 0 2.1623 1.0789 2.1623 2.4045s-.9659 2.4045-2.1623 2.4045z"/>
                         </svg>
                     </a>
-                    <a href="https://www.linkedin.com/in/wainfoundation-9a30b9367/" aria-label="Connect on LinkedIn">
+                    <a href="https://www.linkedin.com/in/wainfoundation-9a30b9367/" aria-label="Connect on LinkedIn (Placeholder)">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.029-3.058-1.867-3.058-1.867 0-2.152 1.459-2.152 2.968v5.694h-3v-11h2.879v1.508h.04c.401-.757 1.379-1.557 2.837-1.557 3.035 0 3.596 2.001 3.596 4.604v6.445z"/>
                         </svg>
                     </a>
                 </div>
                 <div class="legal-links">
-                    <a href="/privacy.html">Privacy Policy</a>
-                    <a href="/terms.html">Terms of Service</a>
-                    <a href="/cookies.html">Cookies Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookies Policy</a>
                 </div>
                 <div class="copyright-lang">
-                    <span>© 2025 Mrwain Organization. All rights reserved.</span>
+                    <span>&copy; 2025 Mrwain Organization. All rights reserved.</span>
                     <div class="language-selector">
                         <span class="lang-icon">🌐</span>
                         <select aria-label="Select language">
@@ -1091,18 +1903,65 @@
             </div>
         </div>
     </footer>
-    <script src="/js/scripts.js"></script>
+
+    <!-- JavaScript -->
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
-        }
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.main-nav');
+        const backdrop = document.querySelector('.backdrop');
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+        hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('active');
+            backdrop.classList.toggle('active');
+            hamburgerIcon.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // Close menu when clicking backdrop
+        backdrop.addEventListener('click', () => {
+            hamburger.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('active');
+            backdrop.classList.remove('active');
+            hamburgerIcon.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+
+        // Close menu when clicking a nav link
+        const navLinks = document.querySelectorAll('.main-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('active');
+                backdrop.classList.remove('active');
+                hamburgerIcon.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+
+        // Scroll Animation Trigger
+        const animateSections = document.querySelectorAll('.vision, .mission, .donation, .hall-of-fame, .features, .dapps, .ledger, .future-plans, .announcements, .about-foundation, .bounties, .community, .metrics, .trust-badges, .testimonials, .faq, .impact, .cta-banner');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    entry.target.querySelector('h2, h3')?.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        animateSections.forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
