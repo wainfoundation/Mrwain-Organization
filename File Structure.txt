@@ -23,6 +23,16 @@ mrwain-org/
 │   ├── terms.html          # Terms of Service page
 │   ├── cookies.html        # Cookies Policy page
 │   ├── documentation.html  # Documentation page
+├── docs/
+│   ├── quantumpay.html
+│   ├── truthweb.html
+│   ├── cloudy.html
+│   ├── droplink.html
+│   ├── taskhub.html
+│   ├── salenus.html
+│   ├── trendforge.html
+│   ├── smartsolve.html
+│   └── sundaysoul.html
 │   ├── assets/
 │   │   ├── images/         # Icons, logos, etc.
 │   │   ├── data/           # JSON data (e.g., announcements.json)
