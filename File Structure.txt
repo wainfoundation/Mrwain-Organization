@@ -1,0 +1,32 @@
+mrwain-org/
+├── dist/                     # Build output
+├── src/
+│   ├── css/
+│   │   ├── base.css        # General styles
+│   │   ├── components.css  # Component-specific styles
+│   │   ├── responsive.css  # Responsive styles
+│   ├── js/
+│   │   ├── main.js         # Main JavaScript
+│   ├── index.html          # Main page
+│   ├── vision.html         # Vision page
+│   ├── mission.html        # Mission page
+│   ├── dapps.html          # DApps page
+│   ├── ledger.html         # Ledger page
+│   ├── donation.html       # Donation page
+│   ├── hall-of-fame.html   # Hall of Fame page
+│   ├── future-plans.html   # Future Plans page
+│   ├── announcement.html   # Announcements page
+│   ├── about.html          # About page
+│   ├── community.html      # Community page
+│   ├── chain.html          # Chain page
+│   ├── privacy.html        # Privacy Policy page
+│   ├── terms.html          # Terms of Service page
+│   ├── cookies.html        # Cookies Policy page
+│   ├── documentation.html  # Documentation page
+│   ├── assets/
+│   │   ├── images/         # Icons, logos, etc.
+│   │   ├── data/           # JSON data (e.g., announcements.json)
+├── .gitignore
+├── package.json
+├── netlify.toml             # Netlify configuration
+├── README.md
