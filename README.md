@@ -67,8 +67,8 @@ Everything here is **open for transparency**, so the Pi community can track the 
 |-------------------|----------------|--------------------------------------------|
 | **Cloudy**        | 🚧 In Progress | Decentralized cloud work & collaboration   |
 | **TruthWeb**      | 🚧 In Progress        | Web3 social commerce + Pi-based marketplace|
-| **QuantumPay**    | 🔄 Testing     | Pi-native payment processor like Stripe    |
-| **TrendForge**    | 🛠️ Planning   | News & trends platform for digital culture |
+| **QuantumPay**    | 🚧 In Progress    | Pi-native payment processor like Stripe    |
+| **TrendForge**    | 🛠️ Test Net Paste   | News & trends platform for digital culture |
 | **Droplink**     | 🚧 In Progress | A platform that helps creators and businesses share content        |
 | **TaskHub**       | 🚧 In Progress   | Microtask job board for Pi earners         |
 | **Mrwain Foundation** | ✅ Live  | Treasury & governance wallet for ecosystem |
@@ -94,6 +94,6 @@ Everything here is **open for transparency**, so the Pi community can track the 
 ## 🌱 Future DApps (Coming Soon)
 
 ---
-Read Our Docs For More Detals : https://tinyurl.com/mrwaindocs
+Read Our Docs For More Detals : 
 **Built with ❤️ by the mrwain Organization**  
 🌐 Empowering the Pi Network through real utility and vision
